@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author inftel22
@@ -16,7 +18,8 @@ public class VistaAlumno extends javax.swing.JFrame {
      */
     public VistaAlumno(String nombre) {
         initComponents();
-        hello_msg.setText("Bienvenido "+nombre);
+        hello_msg.setText( Messages.getString("hello_msg_label")+" "+nombre);
+        this.setTitle(Messages.getString("tituloAlumno"));
         
     }
 
@@ -37,13 +40,13 @@ public class VistaAlumno extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de control Alumno");
 
-        jLabel1.setText("Vista Alumno");
+        jLabel1.setText(Messages.getString("labelAlumno"));
 
-        btnSeleccionar.setText("Seleccionar Test");
+        btnSeleccionar.setText(Messages.getString("btnSeleccionar"));
 
-        btnResultados.setText("Resultados");
+        btnResultados.setText(Messages.getString("btnResultados"));
 
-        hello_msg.setText("Bienvenido ");
+        hello_msg.setText(Messages.getString("hello_msg_label"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,7 +122,7 @@ public class VistaAlumno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnResultados;
     public javax.swing.JButton btnSeleccionar;
-    private javax.swing.JLabel hello_msg;
+    public javax.swing.JLabel hello_msg;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
