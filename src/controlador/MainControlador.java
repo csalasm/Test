@@ -5,7 +5,6 @@
  */
 package controlador;
 
-import Utilidades.Messages;
 import Vistas.VistaLogin;
 import java.util.Locale;
 
@@ -18,9 +17,9 @@ public class MainControlador {
     
     public static void main(String args[]) {
         LoginControlador lc = new LoginControlador(null, new VistaLogin());
-        Messages.getCadena();
-        Messages.setLocale(new Locale("en","UK"));
-        System.out.println(Messages.getString("msg_error"));
+        //Messages.getCadena();
+        //Messages.setLocale(new Locale("en","UK"));
+        //System.out.println(Messages.getString("msg_error"));
     }
     
 }

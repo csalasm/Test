@@ -9,8 +9,10 @@ import Utilidades.Messages;
 import Vistas.VistaAlumno;
 import Vistas.VistaLogin;
 import Vistas.VistaProfesor;
+import com.sun.jmx.snmp.ThreadContext;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import modeloDAO.UsuarioDAO;
@@ -21,7 +23,7 @@ import modeloDAO.UsuarioDAO;
  */
 public class LoginControlador implements ActionListener {
     final private UsuarioDAO usuario;
-    final private VistaLogin vistaLogin;
+    private VistaLogin vistaLogin;
     
     public LoginControlador(UsuarioDAO u, VistaLogin vl) {
         usuario = (u == null) ? new UsuarioDAO() : u;
@@ -53,11 +55,35 @@ public class LoginControlador implements ActionListener {
                 JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_error"),null,JOptionPane.ERROR_MESSAGE);
             }
         }
+        else if (e.getActionCommand().equals("BTN_ES")) {
+            Messages.setLocale(new Locale("es", "ES"));
+            resetLogin();
+            
+        }
+        else if (e.getActionCommand().equals("BTN_EN")) {
+            Messages.setLocale(new Locale("en", "UK"));
+            resetLogin();
+        }
     }
+   
     
     private void initEvents() {
         vistaLogin.btnConectar.setActionCommand("LOGIN");
         vistaLogin.btnConectar.addActionListener(this);
+        vistaLogin.btnIdiomaES.setActionCommand("BTN_ES");
+        vistaLogin.btnIdiomaES.addActionListener(this);
+        vistaLogin.btnIdiomaUK.setActionCommand("BTN_EN");
+        vistaLogin.btnIdiomaUK.addActionListener(this);
+    }
+    
+    private void resetLogin() {
+        vistaLogin.setVisible(false);
+        vistaLogin.dispose();
+        vistaLogin = new VistaLogin();
+        vistaLogin.setLocationRelativeTo(null);   
+        vistaLogin.setVisible(true);     
+        vistaLogin.toFront();
+        initEvents();
     }
     
     
