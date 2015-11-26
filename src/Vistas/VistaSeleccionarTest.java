@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vistas;
+import Utilidades.Messages;
 
 /**
  *
@@ -28,7 +29,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        labelSeleccionTest = new javax.swing.JLabel();
         btnSeleccionarTest = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListTest = new javax.swing.JList();
@@ -38,7 +39,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setText("Lista de Test:");
+        labelSeleccionTest.setText(Messages.getString("labelSeleccionTest"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -46,15 +47,15 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelSeleccionTest)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
+            .addComponent(labelSeleccionTest)
         );
 
-        btnSeleccionarTest.setText("Seleccionar");
+        btnSeleccionarTest.setText(Messages.getString("labelSeleccionTest"));
 
         jListTest.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -75,7 +76,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(btnSeleccionarTest)
-                        .addGap(0, 144, Short.MAX_VALUE))
+                        .addGap(0, 131, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
@@ -98,9 +99,9 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnSeleccionarTest;
-    private javax.swing.JLabel jLabel1;
     public javax.swing.JList jListTest;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelSeleccionTest;
     // End of variables declaration//GEN-END:variables
 }
