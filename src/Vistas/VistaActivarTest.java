@@ -36,12 +36,12 @@ public class VistaActivarTest extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbTesDesct = new javax.swing.JComboBox<String>();
         btnDesactiva = new javax.swing.JButton();
-        cbActivaTest = new javax.swing.JComboBox<>();
+        cbActivaTest = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Activar Test");
 
-        jLabel1.setText("Selecciona Test:");
+        jLabel1.setText(Messages.getString("labelSeleccionaTest"));
 
         btnFinaliza.setText(Messages.getString("btnVolver"));
 
@@ -56,7 +56,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
             }
         });
 
-        btnDesactiva.setText("Desactiva Test");
+        btnDesactiva.setText(Messages.getString("btnDesactivar"));
 
         cbActivaTest.setModel(new javax.swing.DefaultComboBoxModel<>());
 
