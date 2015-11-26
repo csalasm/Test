@@ -6,14 +6,13 @@
 package Vistas;
 
 import Utilidades.Messages;
-import javatest.ConexionBBDD;
 import Vistas.VistaAlumno;
 import controlador.LoginControlador;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author inftel22
+ * @author andresbailen93
  */
 public class VistaLogin extends javax.swing.JFrame {
 
@@ -21,7 +20,6 @@ public class VistaLogin extends javax.swing.JFrame {
      * Creates new form VistaLogin
      */
     
-    ConexionBBDD conexion = new ConexionBBDD();
     
     public VistaLogin() {
         initComponents();
