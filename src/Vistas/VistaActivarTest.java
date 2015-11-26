@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author andresbailen93
@@ -16,6 +18,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
      */
     public VistaActivarTest() {
         initComponents();
+        this.setTitle(Messages.getString("tituloActivar"));
     }
 
     /**
@@ -31,20 +34,20 @@ public class VistaActivarTest extends javax.swing.JFrame {
         btnFinaliza = new javax.swing.JButton();
         btnActiva = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        cbTesDesct = new javax.swing.JComboBox<>();
+        cbTesDesct = new javax.swing.JComboBox<String>();
         btnDesactiva = new javax.swing.JButton();
-        cbActivaTest = new javax.swing.JComboBox<>();
+        cbActivaTest = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Activar Test");
 
-        jLabel1.setText("Selecciona Test:");
+        jLabel1.setText(Messages.getString("labelSeleccionaTest"));
 
-        btnFinaliza.setText("Volver");
+        btnFinaliza.setText(Messages.getString("btnVolver"));
 
-        btnActiva.setText("Activa Test");
+        btnActiva.setText(Messages.getString("btnActivarTest"));
 
-        jLabel2.setText("Selecciona Test:");
+        jLabel2.setText(Messages.getString("labelSeleccionaTest"));
 
         cbTesDesct.setModel(new javax.swing.DefaultComboBoxModel<>());
         cbTesDesct.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +56,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
             }
         });
 
-        btnDesactiva.setText("Desactiva Test");
+        btnDesactiva.setText(Messages.getString("btnDesactivar"));
 
         cbActivaTest.setModel(new javax.swing.DefaultComboBoxModel<>());
 
