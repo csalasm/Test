@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author Asus
@@ -17,6 +19,7 @@ public class VistaNuevoTest extends javax.swing.JFrame {
      */
     public VistaNuevoTest() {
         initComponents();
+        this.setTitle(Messages.getString("tituloAnadirTest"));
     }
 
     /**
@@ -35,28 +38,28 @@ public class VistaNuevoTest extends javax.swing.JFrame {
         btnNuevoTest = new javax.swing.JButton();
         jTextAutor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        cbDuracion = new javax.swing.JComboBox<>();
-        cbRestada = new javax.swing.JComboBox<>();
+        cbDuracion = new javax.swing.JComboBox<String>();
+        cbRestada = new javax.swing.JComboBox<String>();
         lblTiempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Añadir nuevo test");
 
-        label_nombre.setText("Nombre:");
+        label_nombre.setText(Messages.getString("labelNombre"));
 
-        label_duracion.setText("Duración:");
+        label_duracion.setText(Messages.getString("labelDuracion"));
 
-        label_resta.setText("Puntuación restada por fallo:");
+        label_resta.setText(Messages.getString("labelRestada"));
 
-        btnNuevoTest.setText("Nuevo Test");
+        btnNuevoTest.setText(Messages.getString("btnNuevoTest"));
 
-        jLabel1.setText("Autor:");
+        jLabel1.setText(Messages.getString("labelAutor"));
 
         cbDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(tiempo));
 
         cbRestada.setModel(new javax.swing.DefaultComboBoxModel<>(resta));
 
-        lblTiempo.setText("Minutos.");
+        lblTiempo.setText(Messages.getString("labelMinutos"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,9 +157,9 @@ public class VistaNuevoTest extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     public javax.swing.JTextField jTextAutor;
     public javax.swing.JTextField jTextNombre;
-    private javax.swing.JLabel label_duracion;
-    private javax.swing.JLabel label_nombre;
-    private javax.swing.JLabel label_resta;
-    private javax.swing.JLabel lblTiempo;
+    public javax.swing.JLabel label_duracion;
+    public javax.swing.JLabel label_nombre;
+    public javax.swing.JLabel label_resta;
+    public javax.swing.JLabel lblTiempo;
     // End of variables declaration//GEN-END:variables
 }
