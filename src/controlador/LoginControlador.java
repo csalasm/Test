@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Utilidades.Messages;
 import Vistas.VistaAlumno;
 import Vistas.VistaLogin;
 import Vistas.VistaProfesor;
@@ -49,7 +50,7 @@ public class LoginControlador implements ActionListener {
                 }
             }
             else {
-                JOptionPane.showMessageDialog(vistaLogin, "Usuario/Contraseña incorrecta",null,JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_error"),null,JOptionPane.ERROR_MESSAGE);
             }
         }
     }
