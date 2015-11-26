@@ -65,12 +65,16 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Vista Alumno"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Messages.getString(&quot;labelAlumno&quot;)" type="code"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnSeleccionar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Seleccionar Test"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Messages.getString(&quot;btnSeleccionar&quot;)" type="code"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -78,7 +82,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnResultados">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Resultados"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Messages.getString(&quot;btnResultados&quot;)" type="code"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -86,8 +92,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="hello_msg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bienvenido "/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Messages.getString(&quot;hello_msg_label&quot;)" type="code"/>
+        </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
