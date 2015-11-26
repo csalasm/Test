@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author Asus
@@ -16,6 +18,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
      */
     public VistaNuevoUsuario() {
         initComponents();
+        this.setTitle(Messages.getString("titleNuevoUsuario"));
     }
 
     /**
@@ -48,7 +51,7 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nuevo usuario");
 
-        btnAnadir.setText("Añadir");
+        btnAnadir.setText(Messages.getString("btnAnadir"));
         btnAnadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnadirActionPerformed(evt);
@@ -57,20 +60,20 @@ public class VistaNuevoUsuario extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        labelNombre.setText("Nombre:");
+        labelNombre.setText(Messages.getString("labelNombre"));
 
-        labelApellidos.setText("Apellidos:");
+        labelApellidos.setText(Messages.getString("labelApellidos"));
 
-        labelDni.setText("DNI:");
+        labelDni.setText(Messages.getString("labelDNI"));
 
-        labelPassword.setText("Contraseña:");
+        labelPassword.setText(Messages.getString("labelContrasena"));
 
-        labelPermiso.setText("Permisos:");
+        labelPermiso.setText(Messages.getString("labelPermisos"));
 
-        rbSiPermiso.setText("Si");
+        rbSiPermiso.setText(Messages.getString("labelSi"));
 
         rbNoPermiso.setSelected(true);
-        rbNoPermiso.setText("No");
+        rbNoPermiso.setText(Messages.getString("labelNo"));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
