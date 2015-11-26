@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Utilidades.Messages;
 import Vistas.VistaActivarTest;
 import Vistas.VistaCrearPregunta;
 import Vistas.VistaNuevoTest;
@@ -135,6 +136,7 @@ public class ProfesorControlador  implements ActionListener {
         vnu.tfDniUser.setText("");
         vnu.tfApellidos.setText("");
         vnu.pfPassword.setText("");
+        JOptionPane.showMessageDialog(vnu,Messages.getString("useradd"),null,JOptionPane.INFORMATION_MESSAGE);
         vnu.setVisible(false);
         vnu.pfPassword.setText("");
         
@@ -159,6 +161,7 @@ public class ProfesorControlador  implements ActionListener {
         vnt.jTextNombre.setText("");
         vnt.cbDuracion.setSelectedIndex(0);
         vnt.cbRestada.setSelectedIndex(0);
+        JOptionPane.showMessageDialog(vnt,Messages.getString("testadd"),null,JOptionPane.INFORMATION_MESSAGE);
         vnt.setVisible(false);
 
     }
@@ -261,7 +264,7 @@ public class ProfesorControlador  implements ActionListener {
         testdao.UpdateDispo(teste, Boolean.TRUE);
         vat.cbTesDesct.addItem(nombretestact);
         vat.cbActivaTest.removeItem(nombretestact);
-         JOptionPane.showMessageDialog(vat, "Test Activo.",null,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(vat, Messages.getString("test_acti."),null,JOptionPane.INFORMATION_MESSAGE);
     }
     private void desactivaDispo(){
         String nombretestdest=(String)vat.cbTesDesct.getSelectedItem();
@@ -269,7 +272,7 @@ public class ProfesorControlador  implements ActionListener {
         testdao.UpdateDispo(teste, Boolean.FALSE);
         vat.cbActivaTest.addItem(nombretestdest);
         vat.cbTesDesct.removeItem(nombretestdest);
-        JOptionPane.showMessageDialog(vat, "Test Desactivado.",null,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(vat, Messages.getString("test_desacti"),null,JOptionPane.INFORMATION_MESSAGE);
     }
     
 }
