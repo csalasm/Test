@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author Asus
@@ -16,6 +18,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
      */
     public VistaCrearPregunta() {
         initComponents();
+        this.setTitle(Messages.getString("titleAnnadirPregunta"));
     }
 
     /**
@@ -49,7 +52,6 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
         tfRespUno = new javax.swing.JTextField();
         tfRespCuatro = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnAnadirResp = new javax.swing.JButton();
         btnFinal = new javax.swing.JButton();
 
         buttonGroup1.add(rbtnUno);
@@ -60,7 +62,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Añadir nueva pregunta");
 
-        btnAnadirPreg.setText("Añadir Pregunta");
+        btnAnadirPreg.setText(Messages.getString("btnAddPregunta"));
         btnAnadirPreg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnadirPregActionPerformed(evt);
@@ -69,9 +71,9 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Pregunta:");
+        jLabel1.setText(Messages.getString("labelPregunta"));
 
-        jLabel3.setText("Seleccionar temática:");
+        jLabel3.setText(Messages.getString("labelSeleccionarTematica"));
 
         cbSelecTema.setModel(new javax.swing.DefaultComboBoxModel());
         cbSelecTema.addActionListener(new java.awt.event.ActionListener() {
@@ -86,9 +88,9 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
             }
         });
 
-        btnaddTema.setText("Añadir Temática");
+        btnaddTema.setText(Messages.getString("btnAnadirTematica"));
 
-        lblTestId.setText("Selecciona Test:");
+        lblTestId.setText(Messages.getString("labelSeleccionaTest"));
 
         cbSelecTestID.setModel(new javax.swing.DefaultComboBoxModel<>());
 
@@ -124,14 +126,13 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfTextoPregunta, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(0, 80, Short.MAX_VALUE))
+                    .addComponent(tfTextoPregunta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbSelecTestID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTestId))
@@ -148,7 +149,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
 
         jPanelRespuestas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel2.setText("Respuestas:");
+        jLabel2.setText(Messages.getString("labelRespuestas"));
 
         rbtnUno.setText("1");
         rbtnUno.addActionListener(new java.awt.event.ActionListener() {
@@ -169,14 +170,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("*Debe marcar la respuesta correcta.");
-
-        btnAnadirResp.setText("Añade Respuesta");
-        btnAnadirResp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnadirRespActionPerformed(evt);
-            }
-        });
+        jLabel4.setText(Messages.getString("labelAnotacion"));
 
         javax.swing.GroupLayout jPanelRespuestasLayout = new javax.swing.GroupLayout(jPanelRespuestas);
         jPanelRespuestas.setLayout(jPanelRespuestasLayout);
@@ -208,8 +202,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
                     .addGroup(jPanelRespuestasLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                        .addComponent(btnAnadirResp)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelRespuestasLayout.setVerticalGroup(
@@ -233,13 +226,11 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
                     .addComponent(tfRespCuatro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnCuatro))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelRespuestasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(btnAnadirResp))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel4)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        btnFinal.setText("Finalizar");
+        btnFinal.setText(Messages.getString("btnFinalizarAddPregunta"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,7 +244,7 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAnadirPreg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAnadirPreg, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                             .addComponent(btnFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(124, 124, 124)))
                 .addContainerGap())
@@ -297,11 +288,6 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSelecTemaActionPerformed
 
-    private void btnAnadirRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirRespActionPerformed
-        // TODO add your handling code here:
-        jPanelRespuestas.add(new jpComponente());
-    }//GEN-LAST:event_btnAnadirRespActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -340,7 +326,6 @@ public class VistaCrearPregunta extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAnadirPreg;
-    public javax.swing.JButton btnAnadirResp;
     public javax.swing.JButton btnFinal;
     public javax.swing.JButton btnaddTema;
     public javax.swing.ButtonGroup buttonGroup1;
