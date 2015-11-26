@@ -35,9 +35,8 @@ public class VistaNuevoTest extends javax.swing.JFrame {
         btnNuevoTest = new javax.swing.JButton();
         jTextAutor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        rbActivo = new javax.swing.JRadioButton();
-        cbDuracion = new javax.swing.JComboBox<String>();
-        cbRestada = new javax.swing.JComboBox<String>();
+        cbDuracion = new javax.swing.JComboBox<>();
+        cbRestada = new javax.swing.JComboBox<>();
         lblTiempo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -53,8 +52,6 @@ public class VistaNuevoTest extends javax.swing.JFrame {
 
         jLabel1.setText("Autor:");
 
-        rbActivo.setText("Activo");
-
         cbDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(tiempo));
 
         cbRestada.setModel(new javax.swing.DefaultComboBoxModel<>(resta));
@@ -68,18 +65,15 @@ public class VistaNuevoTest extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnNuevoTest))
+                    .addComponent(label_nombre)
+                    .addComponent(label_duracion)
+                    .addComponent(label_resta)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnNuevoTest, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_nombre)
-                            .addComponent(label_duracion)
-                            .addComponent(label_resta)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbActivo)
                             .addComponent(jTextAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -110,11 +104,9 @@ public class VistaNuevoTest extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbActivo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnNuevoTest)
-                .addGap(14, 14, 14))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -166,6 +158,5 @@ public class VistaNuevoTest extends javax.swing.JFrame {
     private javax.swing.JLabel label_nombre;
     private javax.swing.JLabel label_resta;
     private javax.swing.JLabel lblTiempo;
-    public javax.swing.JRadioButton rbActivo;
     // End of variables declaration//GEN-END:variables
 }

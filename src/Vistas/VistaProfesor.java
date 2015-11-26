@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author inftel22
@@ -16,6 +18,7 @@ public class VistaProfesor extends javax.swing.JFrame {
      */
     public VistaProfesor() {
         initComponents();
+        this.setTitle(Messages.getString(null));
     }
 
     /**
@@ -36,20 +39,20 @@ public class VistaProfesor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de control profesor");
 
-        etqVistaProfesor.setText("Vista Profesor");
+        etqVistaProfesor.setText(Messages.getString("labelProfesor"));
 
-        btnAnadirUsuario.setText("Añadir Usuario");
+        btnAnadirUsuario.setText(Messages.getString("btnAnadirUsuario"));
         btnAnadirUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAnadirUsuarioActionPerformed(evt);
             }
         });
 
-        btnAnadeTest.setText("Añadir Test");
+        btnAnadeTest.setText(Messages.getString("btnAnadirTest"));
 
-        btnCreaPregunta.setText("Añadir Pregunta");
+        btnCreaPregunta.setText(Messages.getString("btnAnadirPregunta"));
 
-        btnActivaTest.setText("Activar/Desactivar Test");
+        btnActivaTest.setText(Messages.getString("btnActivar"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +61,7 @@ public class VistaProfesor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
                 .addComponent(etqVistaProfesor)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -73,9 +76,9 @@ public class VistaProfesor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(etqVistaProfesor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addComponent(btnAnadeTest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreaPregunta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAnadirUsuario)
@@ -131,7 +134,7 @@ public class VistaProfesor extends javax.swing.JFrame {
     public javax.swing.JButton btnAnadeTest;
     public javax.swing.JButton btnAnadirUsuario;
     public javax.swing.JButton btnCreaPregunta;
-    private javax.swing.JLabel etqVistaProfesor;
+    public javax.swing.JLabel etqVistaProfesor;
     // End of variables declaration//GEN-END:variables
 }
 ///AÑADIR USUARIO

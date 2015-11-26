@@ -5,6 +5,7 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
 import java.util.ArrayList;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -24,10 +25,11 @@ public class VistaResultados extends javax.swing.JFrame {
      */
     public VistaResultados(int ntest) {
         
-        modeloTabla = new DefaultTableModel(new Object[] { "DNI", "Fecha","ID_TEST","Aciertos","Fallos","Puntuación" }, 0);
-        modeloTabla2 = new DefaultTableModel(new Object[] { "Aciertos", "Fallos","Puntuación Media:"}, 0);
+        modeloTabla = new DefaultTableModel(new Object[] { Messages.getString("labelDNI"), Messages.getString("Fecha"),"ID_TEST", Messages.getString("Aciertos"),Messages.getString("Fallos"),Messages.getString("Puntuacion") }, 0);
+        modeloTabla2 = new DefaultTableModel(new Object[] { Messages.getString("Aciertos"), Messages.getString("Fallos"),Messages.getString("PuntuacionMedia")}, 0);
         
         initComponents();
+        this.setTitle(Messages.getString("TituloResultados"));
     }
 
     /**
