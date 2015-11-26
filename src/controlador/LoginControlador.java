@@ -25,8 +25,8 @@ public class LoginControlador implements ActionListener {
     public LoginControlador(UsuarioDAO u, VistaLogin vl) {
         usuario = (u == null) ? new UsuarioDAO() : u;
         vistaLogin = vl;
+        vistaLogin.setLocationRelativeTo(null);   
         vistaLogin.setVisible(true);     
-        vistaLogin.setLocationRelativeTo(null);       
         vistaLogin.toFront();
         initEvents();
     }
