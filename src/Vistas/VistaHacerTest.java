@@ -14,9 +14,11 @@ public class VistaHacerTest extends javax.swing.JFrame {
     public boolean tiempoAcabado = false;
 
     /** Creates new form interfaz */
-    public VistaHacerTest(int totalSegundos) {
+    public VistaHacerTest(int totalSegundos, String title) {
         this.totalSegundos = totalSegundos;
         initComponents();
+        this.setTitle(title);
+        btnSiguiente.setText(Messages.getString("siguiente"));
        
     }
     

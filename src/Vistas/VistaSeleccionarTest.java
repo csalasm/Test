@@ -17,6 +17,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
      */
     public VistaSeleccionarTest() {
         initComponents();
+        this.setTitle(Messages.getString("labelSeleccionTest"));
     }
 
     /**
