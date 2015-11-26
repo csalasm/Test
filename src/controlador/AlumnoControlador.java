@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Utilidades.Messages;
 import Vistas.VistaAlumno;
 import Vistas.VistaHacerTest;
 import Vistas.VistaResultados;
@@ -117,7 +118,7 @@ class AlumnoControlador implements ActionListener{
             case "SELECCIONAR_TEST":
                 listaRespuestasUsuario = new ArrayList<>();
                 testActual = listaTest.get(vst.jListTest.getSelectedIndex());
-                vht = new VistaHacerTest(testActual.getDuracion());
+                vht = new VistaHacerTest(testActual.getDuracion(), testActual.getNombre());
                 // Recuperamos las preguntas que tiene el test seleccionado
                 
                 listaPreguntas = new PreguntaDAO().getPreguntasFromTest(testActual);
@@ -130,7 +131,7 @@ class AlumnoControlador implements ActionListener{
                     vht.vistaCronometro.iniciarCronometro();
                 }
                 else
-                    JOptionPane.showMessageDialog(vst, "El test seleccionado no contiene preguntas", "", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(vst, Messages.getString("msgSelectedTestHasNoQuestion"), "", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case "SIGUIENTE_PREGUNTA":
                 processPregunta();
@@ -228,7 +229,7 @@ class AlumnoControlador implements ActionListener{
         vht.dispose();
         // DefaultListModel model = (DefaultListModel) vst.jListTest.getModel();
         //model.remove(vst.jListTest.getSelectedIndex());
-        JOptionPane.showMessageDialog(vst, "La calificación del test es: "+nota,null,JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(vst, Messages.getString("msgTestScore")+" "+nota,null,JOptionPane.INFORMATION_MESSAGE);
         preguntaActual = 0;
         // Guardamos el examen realizado
         

@@ -17,6 +17,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
      */
     public VistaSeleccionarTest() {
         initComponents();
+        this.setTitle(Messages.getString("labelSeleccionTest"));
     }
 
     /**
@@ -55,7 +56,7 @@ public class VistaSeleccionarTest extends javax.swing.JFrame {
             .addComponent(labelSeleccionTest)
         );
 
-        btnSeleccionarTest.setText(Messages.getString("labelSeleccionTest"));
+        btnSeleccionarTest.setText(Messages.getString("tituloSeleccionTest"));
 
         jListTest.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
