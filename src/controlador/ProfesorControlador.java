@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Utilidades.Messages;
 import Vistas.VistaActivarTest;
 import Vistas.VistaCrearPregunta;
 import Vistas.VistaNuevoTest;
@@ -135,6 +136,7 @@ public class ProfesorControlador  implements ActionListener {
         vnu.tfDniUser.setText("");
         vnu.tfApellidos.setText("");
         vnu.pfPassword.setText("");
+        JOptionPane.showMessageDialog(vnu,Messages.getString(" "),null,JOptionPane.INFORMATION_MESSAGE);
         vnu.setVisible(false);
         vnu.pfPassword.setText("");
         
