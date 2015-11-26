@@ -54,8 +54,8 @@ public class ProfesorControlador  implements ActionListener {
     public ProfesorControlador(UsuarioDAO u,Usuario us, VistaProfesor vp) throws NullPointerException{
         usuario = (u == null) ? new UsuarioDAO() : u;
         vistaProfesor = vp;
-        vistaProfesor.setVisible(true);
         vistaProfesor.setLocationRelativeTo(null);
+        vistaProfesor.setVisible(true);
         userprof=us;
         initEvents();
     }
@@ -118,8 +118,8 @@ public class ProfesorControlador  implements ActionListener {
 
     private void aniadeVistaUsuario() throws NullPointerException{
         vnu= new VistaNuevoUsuario();
-        vnu.setVisible(true);
         vnu.setLocationRelativeTo(null);
+        vnu.setVisible(true);
         vnu.btnAnadir.setActionCommand("ADDu");
         vnu.btnAnadir.addActionListener(this);
         
@@ -144,8 +144,8 @@ public class ProfesorControlador  implements ActionListener {
         }
     private void aniadeNuevoTest()throws NullPointerException{
         vnt=new VistaNuevoTest();
-        vnt.setVisible(true);
         vnt.setLocationRelativeTo(null);
+        vnt.setVisible(true);
         vnt.btnNuevoTest.setActionCommand("ADDt");
         vnt.btnNuevoTest.addActionListener(this);
         vnt.jTextAutor.setText(userprof.getDni());
@@ -154,7 +154,7 @@ public class ProfesorControlador  implements ActionListener {
     private void aniadeTest()throws NullPointerException{
         testdao=new TestDAO();
         test= new Test(testdao.devuelveSequence(),vnt.jTextNombre.getText(),vnt.cbDuracion.getSelectedIndex()*60,
-                            vnt.cbRestada.getSelectedIndex(),userprof.getDni(),vnt.rbActivo.isSelected());
+                            vnt.cbRestada.getSelectedIndex(),userprof.getDni(),Boolean.FALSE);
         testdao.insertaTest(test);
         vnt.jTextNombre.setText("");
         vnt.cbDuracion.setSelectedIndex(0);
@@ -166,10 +166,10 @@ public class ProfesorControlador  implements ActionListener {
         vcp=new VistaCrearPregunta();
         testdao=new TestDAO();
         categodao=new CategoriaDAO();
+        vcp.setLocationRelativeTo(null);
         vcp.setVisible(true);
 
         lista_test=testdao.devuelveTestes(userprof);
-        vcp.setLocationRelativeTo(null);
         
         for(int i=0;i<lista_test.size();i++){
             vcp.cbSelecTestID.addItem(lista_test.get(i).getNombre());
@@ -235,19 +235,18 @@ public class ProfesorControlador  implements ActionListener {
     private void activaTest(){
         testdao=new TestDAO();
         vat=new VistaActivarTest();
+        vat.setLocationRelativeTo(null);
         vat.setVisible(true);
         
         ArrayList<Test> lista_mitesACT=testdao.devuelveTestActivosProf(userprof);
         for(int i=0;i<lista_mitesACT.size();i++){
             vat.cbTesDesct.addItem(lista_mitesACT.get(i).getNombre());
-            //ESto hay que revisarlo
         }
-        ArrayList<Test> lista_mitesDESC=testdao.devuelveTestDesactivosProf(userprof);
-        for(int i=0;i>lista_mitesDESC.size();i++){
-            vat.cbTestAct.addItem(lista_mitesDESC.get(i).getNombre());
+        testdao=new TestDAO();
+        ArrayList<Test> lista_mitesNOACT=testdao.devuelveTestDesactivosProf(userprof);
+        for(int i=0;i<lista_mitesNOACT.size();i++){
+            vat.cbActivaTest.addItem(lista_mitesNOACT.get(i).getNombre());
         }
-        //String nombretestact=(String)vat.cbTestAct.getSelectedItem();        
-        //teste=testdao.devuelveTestNomUsuario(nombretestact);
 
         vat.btnActiva.setActionCommand("ACTIVAdispo");
         vat.btnActiva.addActionListener(this);
@@ -257,16 +256,19 @@ public class ProfesorControlador  implements ActionListener {
         vat.btnFinaliza.addActionListener(this);
     }
     private void activaDispo(){
-        String nombretestact=(String)vat.cbTestAct.getSelectedItem();
+        String nombretestact=(String)vat.cbActivaTest.getSelectedItem();
         teste=testdao.devuelveTestNomUsuario(nombretestact);
         testdao.UpdateDispo(teste, Boolean.TRUE);
-        //vat.cbTestAct.;
+        vat.cbTesDesct.addItem(nombretestact);
+        vat.cbActivaTest.removeItem(nombretestact);
          JOptionPane.showMessageDialog(vat, "Test Activo.",null,JOptionPane.INFORMATION_MESSAGE);
     }
     private void desactivaDispo(){
         String nombretestdest=(String)vat.cbTesDesct.getSelectedItem();
         teste=testdao.devuelveTestNomUsuario(nombretestdest);
         testdao.UpdateDispo(teste, Boolean.FALSE);
+        vat.cbActivaTest.addItem(nombretestdest);
+        vat.cbTesDesct.removeItem(nombretestdest);
         JOptionPane.showMessageDialog(vat, "Test Desactivado.",null,JOptionPane.INFORMATION_MESSAGE);
     }
     

@@ -1,5 +1,6 @@
 package Vistas;
 
+import Utilidades.Messages;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import modelo.Respuesta;
@@ -92,7 +93,7 @@ public class VistaHacerTest extends javax.swing.JFrame {
     public void setPregunta(String texto, ArrayList<Respuesta> listaRespuestas, int totalPreguntas, int preguntaActual) {
         labelPregunta.setText("("+Integer.toString(preguntaActual+1)+" / "+Integer.toString(totalPreguntas)+") "+texto);
         if (totalPreguntas == preguntaActual+1)
-            btnSiguiente.setText("Finalizar");
+            btnSiguiente.setText(Messages.getString("btnFinalizar"));
         //se añade componente al JFrame
         add(mi_panel);
         //posicion del panel para no sobreponer al boton
@@ -104,3 +105,4 @@ public class VistaHacerTest extends javax.swing.JFrame {
         revalidate();
     }
 }
+
