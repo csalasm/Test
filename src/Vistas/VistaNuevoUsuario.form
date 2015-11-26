@@ -58,7 +58,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnAnadir">
       <Properties>
-        <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="Messages.getString(&quot;btnAnadir&quot;)" type="code"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnadirActionPerformed"/>
@@ -152,7 +154,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelNombre">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelNombre&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -160,7 +164,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelApellidos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Apellidos:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelApellidos&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -168,7 +174,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelDni">
           <Properties>
-            <Property name="text" type="java.lang.String" value="DNI:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelDNI&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -176,7 +184,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelPassword">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Contrase&#xf1;a:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelContrasena&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -189,7 +199,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelPermiso">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Permisos:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelPermisos&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -197,7 +209,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbSiPermiso">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Si"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelSi&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -206,7 +220,9 @@
         <Component class="javax.swing.JRadioButton" name="rbNoPermiso">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
-            <Property name="text" type="java.lang.String" value="No"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Messages.getString(&quot;labelNo&quot;)" type="code"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
