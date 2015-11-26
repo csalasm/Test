@@ -32,21 +32,27 @@ public class VistaAlumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         btnSeleccionar = new javax.swing.JButton();
-        btnResultados = new javax.swing.JButton();
         hello_msg = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        labelMenu = new javax.swing.JLabel();
+        btnResultados = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Panel de control Alumno");
 
-        jLabel1.setText(Messages.getString("labelAlumno"));
-
         btnSeleccionar.setText(Messages.getString("btnSeleccionar"));
 
-        btnResultados.setText(Messages.getString("btnResultados"));
-
+        hello_msg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         hello_msg.setText(Messages.getString("hello_msg_label"));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/35785-200.png"))); // NOI18N
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        labelMenu.setFont(new java.awt.Font("Terminator Two", 0, 24)); // NOI18N
+        labelMenu.setText("MENU:");
+
+        btnResultados.setText(Messages.getString("btnResultados"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,30 +61,33 @@ public class VistaAlumno extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 121, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(hello_msg))
-                        .addContainerGap(174, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSeleccionar)
-                            .addComponent(btnResultados))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(labelMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSeleccionar, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(btnResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hello_msg)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
+                .addContainerGap()
                 .addComponent(hello_msg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addComponent(btnResultados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSeleccionar)
-                .addContainerGap())
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelMenu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSeleccionar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnResultados, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,6 +132,7 @@ public class VistaAlumno extends javax.swing.JFrame {
     public javax.swing.JButton btnResultados;
     public javax.swing.JButton btnSeleccionar;
     public javax.swing.JLabel hello_msg;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelMenu;
     // End of variables declaration//GEN-END:variables
 }
