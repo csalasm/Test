@@ -97,7 +97,7 @@
     <Component class="javax.swing.JButton" name="btnSeleccionarTest">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Messages.getString(&quot;labelSeleccionTest&quot;)" type="code"/>
+          <Connection code="Messages.getString(&quot;tituloSeleccionTest&quot;)" type="code"/>
         </Property>
       </Properties>
       <AuxValues>
