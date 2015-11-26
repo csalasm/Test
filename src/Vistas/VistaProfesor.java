@@ -18,7 +18,7 @@ public class VistaProfesor extends javax.swing.JFrame {
      */
     public VistaProfesor() {
         initComponents();
-        this.setTitle(Messages.getString(null));
+        this.setTitle(Messages.getString("labelProfesor"));
     }
 
     /**

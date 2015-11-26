@@ -5,6 +5,8 @@
  */
 package Vistas;
 
+import Utilidades.Messages;
+
 /**
  *
  * @author andresbailen93
@@ -16,6 +18,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
      */
     public VistaActivarTest() {
         initComponents();
+        this.setTitle(Messages.getString("tituloActivar"));
     }
 
     /**
@@ -28,17 +31,17 @@ public class VistaActivarTest extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cbTestAct = new javax.swing.JComboBox<>();
+        cbTestAct = new javax.swing.JComboBox<String>();
         btnFinaliza = new javax.swing.JButton();
         btnActiva = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        cbTesDesct = new javax.swing.JComboBox<>();
+        cbTesDesct = new javax.swing.JComboBox<String>();
         btnDesactiva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Activar Test");
 
-        jLabel1.setText("Selecciona Test:");
+        jLabel1.setText(Messages.getString("labelSeleccionaTest"));
 
         cbTestAct.setModel(new javax.swing.DefaultComboBoxModel<>());
         cbTestAct.addActionListener(new java.awt.event.ActionListener() {
@@ -47,15 +50,15 @@ public class VistaActivarTest extends javax.swing.JFrame {
             }
         });
 
-        btnFinaliza.setText("Volver");
+        btnFinaliza.setText(Messages.getString("btnVolver"));
 
-        btnActiva.setText("Activa Test");
+        btnActiva.setText(Messages.getString("btnActivarTest"));
 
-        jLabel2.setText("Selecciona Test:");
+        jLabel2.setText(Messages.getString("labelSeleccionaTest"));
 
         cbTesDesct.setModel(new javax.swing.DefaultComboBoxModel<>());
 
-        btnDesactiva.setText("Desactiva Test");
+        btnDesactiva.setText(Messages.getString("btnDesactivar"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +83,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(btnDesactiva, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cbTesDesct, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnFinaliza, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +157,7 @@ public class VistaActivarTest extends javax.swing.JFrame {
     public javax.swing.JButton btnFinaliza;
     public javax.swing.JComboBox<String> cbTesDesct;
     public javax.swing.JComboBox<String> cbTestAct;
-    private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
