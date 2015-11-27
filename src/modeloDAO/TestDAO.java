@@ -37,26 +37,16 @@ public class TestDAO {
      *
      * @param tester Objecto de la clase Test
      */
-    public void insertaTest(Test tester) {
-        if (psSentencia == null) {
-            try {
-                psSentencia = con.prepareStatement("INSERT INTO TEST (ID_TEST,NOMBRE,DURACION,RESTA,DNI,ACTIVO) VALUES (?,?,?,?,?,?)");
-                psSentencia.clearParameters();
-                psSentencia.setInt(1, tester.getId_test());
-                psSentencia.setString(2, tester.getNombre());
-                psSentencia.setInt(3, tester.getDuracion());
-                psSentencia.setInt(4, tester.getResta());
-                psSentencia.setString(5, tester.getDni());
-                psSentencia.setBoolean(6, tester.getActivo());
-                psSentencia.executeUpdate();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(RespuestaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                psSentencia = null;
-            }
-
-        }
+    public void insertaTest(Test tester) throws SQLException {
+            psSentencia = con.prepareStatement("INSERT INTO TEST (ID_TEST,NOMBRE,DURACION,RESTA,DNI,ACTIVO) VALUES (?,?,?,?,?,?)");
+            psSentencia.clearParameters();
+            psSentencia.setInt(1, tester.getId_test());
+            psSentencia.setString(2, tester.getNombre());
+            psSentencia.setInt(3, tester.getDuracion());
+            psSentencia.setInt(4, tester.getResta());
+            psSentencia.setString(5, tester.getDni());
+            psSentencia.setBoolean(6, tester.getActivo());
+            psSentencia.executeUpdate();
 
     }
 

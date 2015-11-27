@@ -119,7 +119,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
                     String fecha = new SimpleDateFormat("dd-MM-yyyy").format(ex.getFecha());
                     String nombre_test = new TestDAO().getNombreTest(ex.getId_test());
                     
-                    Object[] row ={ex.getDni(),fecha,nombre_test,ex.getAciertos(),ex.getFallos(),ex.getNota()};
+                    Object[] row ={fecha,nombre_test,ex.getAciertos(),ex.getFallos(),ex.getNota()};
                     vr.modeloTabla.addRow(row);  
                 }
                 vr.modeloTabla2.addRow(new Object[]{count_aciertos, count_fallos, count_nota/lista_examenes.size()});
@@ -290,7 +290,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
             PDF pdf = new PDF(listaPreguntas, listaDelistaRespuestas);
             generarPdf = true;
             try {
-                pdf.createPDF(t.getNombre(),usuario.getDni()+".pdf");
+                pdf.createPDF(t.getNombre(), String.valueOf(nota), usuario.getDni()+".pdf");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AlumnoControlador.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DocumentException ex) {
