@@ -1,4 +1,7 @@
 package Vistas;
+
+import java.awt.Component;
+
 /**
  */
 public class jpComponente extends javax.swing.JPanel {
@@ -7,7 +10,7 @@ public class jpComponente extends javax.swing.JPanel {
     public jpComponente()  {
         initComponents();
         //JPanel
-        setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        //setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         this.setSize(230, 30);
         this.setVisible(true);//se agrega un comando al boton
      

@@ -234,7 +234,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
      */
     private void aniadeTest() throws NullPointerException {
         testdao = new TestDAO();
-        test = new Test(testdao.devuelveSequence(), vnt.jTextNombre.getText(), vnt.cbDuracion.getSelectedIndex() * 60,
+        test = new Test(testdao.devuelveSequence(), vnt.jTextNombre.getText(), Integer.parseInt((String)vnt.cbDuracion.getSelectedItem()) * 60,
                 vnt.cbRestada.getSelectedIndex(), userprof.getDni(), Boolean.FALSE);
         try {
             testdao.insertaTest(test);
