@@ -33,7 +33,7 @@ public class Test {
      * @param resta Indica si 0 si al fallar no resta, 1 resta lo mismo que al
      *  la pregunta, 2 resta la mitad, 3 resta la tercera parte
      * @param dni Indica el DNI de la persona que esta haciendo el test.
-     * @param activo 
+     * @param activo  Indica si un Test esta Activo o no.
      */
     public Test(int id_test, String nombre, int duracion, int resta, String dni,Boolean activo) {
         this.id_test = id_test;

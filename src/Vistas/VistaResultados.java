@@ -22,8 +22,9 @@ public class VistaResultados extends javax.swing.JFrame {
     public DefaultTableModel modeloTabla2;
     /**
      * Creates new form VistaResultados
+     * 
      */
-    public VistaResultados(int ntest) {
+    public VistaResultados() {
         
         modeloTabla = new DefaultTableModel(new Object[] { Messages.getString("labelDNI"), Messages.getString("Fecha"),Messages.getString("labelNombreTest"), Messages.getString("Aciertos"),Messages.getString("Fallos"),Messages.getString("Puntuacion") }, 0);
         modeloTabla2 = new DefaultTableModel(new Object[] { Messages.getString("Aciertos"), Messages.getString("Fallos"),Messages.getString("PuntuacionMedia")}, 0);

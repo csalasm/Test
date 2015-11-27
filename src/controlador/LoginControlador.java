@@ -24,7 +24,11 @@ public class LoginControlador implements ActionListener {
 
     final private UsuarioDAO usuario;
     private VistaLogin vistaLogin;
-
+/**
+ * Constructor con parametros
+ * @param u Objeto de la clase UsuarioDAO
+ * @param vl Objeto de la clase VistaLogin
+ */
     public LoginControlador(UsuarioDAO u, VistaLogin vl) {
         usuario = (u == null) ? new UsuarioDAO() : u;
         vistaLogin = vl;
@@ -33,7 +37,11 @@ public class LoginControlador implements ActionListener {
         vistaLogin.toFront();
         initEvents();
     }
-
+/**
+ * Funcion que ejecuta una accion en funcion del evento.
+ * @param e Evento de pulsado de un boton
+ * @throws NullPointerException 
+ */
     @Override
     public void actionPerformed(ActionEvent e) throws NullPointerException {
         if (e.getActionCommand().equals("LOGIN")) {
@@ -67,7 +75,9 @@ public class LoginControlador implements ActionListener {
             resetLogin();
         }
     }
-
+/**
+ * Funcion que inicializar los botones de la VistaLogin
+ */
     private void initEvents() {
         vistaLogin.btnConectar.setActionCommand("LOGIN");
         vistaLogin.btnConectar.addActionListener(this);
@@ -76,7 +86,9 @@ public class LoginControlador implements ActionListener {
         vistaLogin.btnIdiomaUK.setActionCommand("BTN_EN");
         vistaLogin.btnIdiomaUK.addActionListener(this);
     }
-
+/**
+ * Funcion que recarga la VistaLogin
+ */
     private void resetLogin() {
         vistaLogin.setVisible(false);
         vistaLogin.dispose();

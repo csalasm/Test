@@ -157,7 +157,7 @@ public class CategoriaDAO {
     /**
      * Funcion que hace que se cierre la conexion cuando se elimina el objeto.
      *
-     * @throws Throwable
+     * @throws Throwable Excepcion
      */
     @Override
     protected void finalize() throws Throwable {

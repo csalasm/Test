@@ -15,6 +15,7 @@ public class VistaProfesor extends javax.swing.JFrame {
 
     /**
      * Creates new form VistaProfesor
+     * @param nombre Nombre del Usuario con roll de profesor
      */
     public VistaProfesor(String nombre) {
         initComponents();

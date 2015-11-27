@@ -60,7 +60,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
      * @param u Objeto de la clase UsuarioDAO
      * @param us Objeto de la clase Usuario
      * @param vp Objeto de la clase VistaProfesor
-     * @throws NullPointerException
+     * @throws NullPointerException Excepcion puntero nulo
      */
     public ProfesorControlador(UsuarioDAO u, Usuario us, VistaProfesor vp) throws NullPointerException {
         usuario = (u == null) ? new UsuarioDAO() : u;

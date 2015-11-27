@@ -13,7 +13,11 @@ public class VistaHacerTest extends javax.swing.JFrame {
     private int totalSegundos;
     public boolean tiempoAcabado = false;
 
-    /** Creates new form interfaz */
+    /** Creates new form interfaz 
+     * 
+     * @param totalSegundos Numero entero de segundos que tiene un Test
+     * @param title Titulo del Test a realizar
+     */
     public VistaHacerTest(int totalSegundos, String title) {
         this.totalSegundos = totalSegundos;
         initComponents();

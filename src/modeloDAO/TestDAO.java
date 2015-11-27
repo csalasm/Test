@@ -194,7 +194,7 @@ public class TestDAO {
     /**
      * Funcion que devuelve todos los test de la base de datos que esten activos
      * @param u Objeto de la clase Usuario
-     * @param all 
+     * @param all Boolean para comprobar que una 
      * @return ArrayList con la lista de los test que estan activos
      */
 
@@ -379,7 +379,7 @@ public class TestDAO {
     /**
      * Funcion que hace que se cierre la conexion cuando se elimina el objeto.
      *
-     * @throws Throwable
+     * @throws Throwable Excepcion
      */
     @Override
     protected void finalize() throws Throwable {

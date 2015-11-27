@@ -72,7 +72,11 @@ class AlumnoControlador implements ActionListener,WindowListener{
     private ArrayList<ArrayList<Respuesta>> listaDelistaRespuestas;
     private Test testActual;
     private Usuario usuario;
-    
+    /**
+     * Contructor de la Clase AlumnoControlador
+     * @param u Objeto de la clase Usuario
+     * @param v Objeto de la clase VistaAlumno
+     */
     public AlumnoControlador(Usuario u, VistaAlumno v){
        this.va=v;
         va.setLocationRelativeTo(null);
@@ -81,7 +85,10 @@ class AlumnoControlador implements ActionListener,WindowListener{
         this.usuario = u; 
         listaDelistaRespuestas = new ArrayList<>();
     }
-
+/**
+ * Funcion que elije las funciones a realizar segun el Evento recibido
+ * @param e Objeto de la Clase ActionEvent
+ */
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -97,7 +104,8 @@ class AlumnoControlador implements ActionListener,WindowListener{
                 alumno = new UsuarioDAO().devuelveUsuario(usuario.getDni());
                 //System.out.println(alumno);
                 ArrayList<Examen> lista_examenes = new ExamenDAO().devolverExamenesAlumno(alumno);
-                VistaResultados vr = new VistaResultados(lista_examenes.size());
+                VistaResultados vr = new VistaResultados();
+               
                 
                 double count_nota=0;
                 double count_aciertos=0;
@@ -154,7 +162,9 @@ class AlumnoControlador implements ActionListener,WindowListener{
                 break;
         }
     }
-
+/**
+ * Funcion que inicia los eventos del Objeto VistaAlumno
+ */
     private void initEvents() {
         va.btnSeleccionar.setActionCommand("SELECCIONAR");
         va.btnSeleccionar.addActionListener(this);
@@ -170,7 +180,9 @@ class AlumnoControlador implements ActionListener,WindowListener{
         });
         
     }
-    
+    /**
+     * Funcion que lista los Test activos dado un Usuario.
+     */
     private void processTestList() {
         // Recuperamos los test activos
         testDAO = new TestDAO();
@@ -182,7 +194,9 @@ class AlumnoControlador implements ActionListener,WindowListener{
         vst.jListTest.setModel(listaNombreTest);
         vst.jListTest.setSelectedIndex(0);
     }
-    
+    /**
+     * Funcion que lista las Respuestas dada una Pregunta
+     */
     private void processPregunta() {
         // Primera pregunta
         if (preguntaActual == 0) {
@@ -211,7 +225,9 @@ class AlumnoControlador implements ActionListener,WindowListener{
             }
         }
     }
-    
+    /**
+     * Funcion que corrige los test.
+     */
     private void corregirTest() {
         int correctas = 0;
         int falladas = 0;
@@ -234,7 +250,12 @@ class AlumnoControlador implements ActionListener,WindowListener{
         }
         calcularNota(correctas, falladas, listaPreguntas.size());
     }
-    
+    /**
+     * Funcion que calcula la nota de un Test
+     * @param correctas Numero de respuestas correctas
+     * @param falladas Numero de respuetas incorrecta
+     * @param numPreguntas Numero total de preguntas
+     */
     @SuppressWarnings("empty-statement")
     private void calcularNota(int correctas, int falladas, int numPreguntas) {
         double nota;
@@ -292,7 +313,9 @@ class AlumnoControlador implements ActionListener,WindowListener{
         else
             JOptionPane.showMessageDialog(vst, Messages.getString("msgTestScore")+" "+nota, null, JOptionPane.INFORMATION_MESSAGE);
     }
-
+/**
+ * Funcion que Devuelve los examenes del Usuario alumno
+ */
    private void processSeleccionar(){
        ArrayList<Examen> listaExamenes = new ExamenDAO().devolverExamenesAlumno(null);
        
