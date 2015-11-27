@@ -131,6 +131,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
                 
                 break;
             case "SELECCIONAR_TEST":
+                preguntaActual = 0;
                 listaRespuestasUsuario = new ArrayList<>();
                 testActual = listaTest.get(vst.jListTest.getSelectedIndex());
                 vht = new VistaHacerTest(testActual.getDuracion(), testActual.getNombre());
@@ -255,7 +256,6 @@ class AlumnoControlador implements ActionListener,WindowListener{
         vht.dispose();
         // DefaultListModel model = (DefaultListModel) vst.jListTest.getModel();
         //model.remove(vst.jListTest.getSelectedIndex());
-        preguntaActual = 0;
         // Guardamos el examen realizado
         
         Examen e = new Examen(usuario.getDni(), t.getId_test(), new Date(Calendar.getInstance().getTime().getTime()), correctas, falladas, nota);
