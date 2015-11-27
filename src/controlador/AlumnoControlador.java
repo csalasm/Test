@@ -149,6 +149,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
                 if (listaPreguntas.size() > 0) {
                     processPregunta();
                     vht.setLocationRelativeTo(null);
+                    vht.pack();
                     vht.setVisible(true);
                     vht.btnSiguiente.setActionCommand("SIGUIENTE_PREGUNTA");
                     vht.btnSiguiente.addActionListener(this);
@@ -159,6 +160,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
                 break;
             case "SIGUIENTE_PREGUNTA":
                 processPregunta();
+                vht.pack();
                 break;
         }
     }
