@@ -40,10 +40,10 @@ public class LoginControlador implements ActionListener {
             
             Usuario u = usuario.logginUser(vistaLogin.user.getText(), vistaLogin.pfPassword.getText());
             //System.out.println(u);
-            usuario.loggeaUsuario(u, Boolean.TRUE);
-            u.setIdentificado(Boolean.TRUE);
-            
-            if (u != null && !u.getIdentificado()) {
+            //u.setIdentificado(Boolean.TRUE);
+            Boolean log=usuario.isIdentificado(u);
+            if (u != null && !log) {
+                usuario.loggeaUsuario(u, Boolean.TRUE);
                 if (u.isEs_profesor()) {
                     ProfesorControlador pc= new ProfesorControlador(usuario, u,new VistaProfesor(u.getNombre()));
                     vistaLogin.dispose();
@@ -53,7 +53,7 @@ public class LoginControlador implements ActionListener {
                     vistaLogin.dispose();
                 }
             }
-            else if(u.getIdentificado()){
+            else if(log){
                 JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_identif"),null,JOptionPane.ERROR_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_error"),null,JOptionPane.ERROR_MESSAGE);

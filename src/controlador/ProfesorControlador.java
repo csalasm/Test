@@ -13,6 +13,8 @@ import Vistas.VistaNuevoUsuario;
 import Vistas.VistaProfesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
@@ -30,7 +32,7 @@ import modeloDAO.RespuestaDAO;
  *
  * @author andresbailen93
  */
-public class ProfesorControlador implements ActionListener {
+public class ProfesorControlador implements ActionListener,WindowListener {
 
     final private UsuarioDAO usuario;
     private TestDAO testdao = null;
@@ -132,6 +134,7 @@ public class ProfesorControlador implements ActionListener {
         vistaProfesor.btnCreaPregunta.addActionListener(this);
         vistaProfesor.btnActivaTest.setActionCommand("ACTIVAtest");
         vistaProfesor.btnActivaTest.addActionListener(this);
+        vistaProfesor.addWindowListener(this);
 
     }
 
@@ -351,6 +354,35 @@ public class ProfesorControlador implements ActionListener {
         vat.cbActivaTest.addItem(nombretestdest);
         vat.cbTesDesct.removeItem(nombretestdest);
         JOptionPane.showMessageDialog(vat, Messages.getString("test_desacti"), null, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        usuario.loggeaUsuario(userprof, Boolean.FALSE);
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
     }
 
 }

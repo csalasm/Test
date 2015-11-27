@@ -169,7 +169,9 @@ public class UsuarioDAO {
     }
 
     /**
-     * Funcion que actualiza el valor Identificador para dejar que solo un Usuario acceda al mismo tiempo en una cuenta.
+     * Funcion que actualiza el valor Identificador para dejar que solo un
+     * Usuario acceda al mismo tiempo en una cuenta.
+     *
      * @param u Objeto de la clase Usuario
      * @param boolen Objeto de la clase Boolean
      * @return Objeto de la clase Usuario
@@ -205,6 +207,34 @@ public class UsuarioDAO {
 
         }
         return u;
+    }
+
+    public Boolean isIdentificado(Usuario u) {
+        Boolean bool=false;
+        if (psSentencia == null) {
+            try {
+                try {
+                    psSentencia = con.prepareStatement("SELECT IDENTIFICADOR FROM USUARIO WHERE DNI=?");
+                    psSentencia.clearParameters();
+                    psSentencia.setString(1, u.getDni());
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ResultSet rs = psSentencia.executeQuery();
+                while (rs.next()) {
+                    int entero= rs.getInt("IDENTIFICADOR");
+                    if(entero==1){
+                        bool=true;
+                    }
+
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                psSentencia = null;
+            }
+        }
+        return bool;
     }
 
     /**
