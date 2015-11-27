@@ -128,7 +128,7 @@ public class PreguntaDAO {
     public ArrayList<Pregunta> getPreguntasFromTest(Test t) {
         ArrayList<Pregunta> listaPreguntas = new ArrayList<>();
         try {
-            ps = con.prepareStatement("SELECT PREGUNTA.ID_PREGUNTA AS ID_PREGUNTA, PREGUNTA.TEXTO AS TEXTO, PREGUNTA.IMAGEN AS IMAGEN, PREGUNTA.ID_CATEGORIA AS ID_CATEGORIA  FROM PREGUNTA, PREGUNTA_TEST WHERE PREGUNTA_TEST.ID_PREGUNTA = PREGUNTA.ID_PREGUNTA AND PREGUNTA_TEST.ID_TEST = ?");
+            ps = con.prepareStatement("SELECT PREGUNTA.ID_PREGUNTA AS ID_PREGUNTA, PREGUNTA.TEXTO AS TEXTO, PREGUNTA.IMAGEN AS IMAGEN, PREGUNTA.ID_CATEGORIA AS ID_CATEGORIA  FROM PREGUNTA, PREGUNTA_TEST WHERE PREGUNTA_TEST.ID_PREGUNTA = PREGUNTA.ID_PREGUNTA AND PREGUNTA_TEST.ID_TEST = ? ORDER BY dbms_random.value");
             ps.clearParameters();
             ps.setInt(1, t.getId_test());
             ResultSet rs = ps.executeQuery();

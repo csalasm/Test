@@ -135,7 +135,13 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         vistaProfesor.btnActivaTest.setActionCommand("ACTIVAtest");
         vistaProfesor.btnActivaTest.addActionListener(this);
         vistaProfesor.addWindowListener(this);
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            @Override
+            public void run(){
+                usuario.loggeaUsuario(userprof, Boolean.FALSE);
 
+            }
+        });
     }
 
     /**
@@ -367,6 +373,8 @@ public class ProfesorControlador implements ActionListener,WindowListener {
 
     @Override
     public void windowClosed(WindowEvent e) {
+        usuario.loggeaUsuario(userprof, Boolean.FALSE);
+
     }
 
     @Override

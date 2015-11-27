@@ -50,6 +50,8 @@ class AlumnoControlador implements ActionListener,WindowListener{
     private TestDAO testDAO;
 
     private RespuestaDAO respuestaDAO;
+    
+    private UsuarioDAO usuarioDAO;
 
     private ExamenDAO examenDAO;
     String dni;
@@ -147,6 +149,14 @@ class AlumnoControlador implements ActionListener,WindowListener{
         va.btnSeleccionar.addActionListener(this);
         va.btnResultados.setActionCommand("RESULTADOS");
         va.btnResultados.addActionListener(this);
+        va.addWindowListener(this);
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            @Override
+            public void run(){
+                usuarioDAO = new UsuarioDAO();
+                usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
+            }
+        });
         
     }
     
@@ -248,18 +258,19 @@ class AlumnoControlador implements ActionListener,WindowListener{
 
     @Override
     public void windowOpened(WindowEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        UsuarioDAO user= new UsuarioDAO();
-        user.loggeaUsuario(usuario, Boolean.FALSE);
+        usuarioDAO=new UsuarioDAO();
+        usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
 
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
+        usuarioDAO=new UsuarioDAO();
+        usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
     }
 
     @Override
@@ -278,5 +289,5 @@ class AlumnoControlador implements ActionListener,WindowListener{
     public void windowDeactivated(WindowEvent e) {
     }
 
-    
+   
 }
