@@ -1,10 +1,12 @@
 package Vistas;
 import Vistas.jpComponente;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 /**
@@ -18,10 +20,9 @@ public class jcPanel extends JPanel implements ActionListener {
 
      public jcPanel()
     {
-        this.setSize(300, 400);
+        this.setSize(380, 200);
         this.setVisible(true);
-        
-        this.setLayout( new FlowLayout() );
+        this.setLayout( new BoxLayout(this,BoxLayout.Y_AXIS) );
     }
 
     public void Mi_Componente(ButtonGroup buttongroup,String respuesta)
@@ -31,7 +32,7 @@ public class jcPanel extends JPanel implements ActionListener {
         buttongroup.add(jpc.radioRespuesta);
         jpc.radioRespuesta.setText(respuesta);
         jpc.radioRespuesta.addActionListener(this);
-        this.add(jpc);//se añade al jpanel
+        this.add(jpc,BorderLayout.EAST);//se añade al jpanel
         this.validate();
         this.buttongroup = buttongroup;
         

@@ -16,6 +16,7 @@ public class Usuario {
     private String apellidos;
     private String password;
     private Boolean es_profesor;
+    private Boolean identificado;
 /**
  * Constructor por defecto.
  */
@@ -37,6 +38,7 @@ public class Usuario {
         this.apellidos = apellidos;
         this.password = contraseña;
         this.es_profesor = es_profesor;
+        this.identificado=false;
     }
 
     /**
@@ -123,9 +125,22 @@ public class Usuario {
     public void setEs_profesor(boolean es_profesor) {
         this.es_profesor = es_profesor;
     }
+/**
+ * Funcion que devuelve si un Usuario esta identificado o no
+ * @return Clase Boolean
+ */
+    public Boolean getIdentificado() {
+        return identificado;
+    }
+/**
+ * Funcion que inserta si un Usuario esta identificado o no
+ * @param identificado Objeto de la clase Boolean
+ */
+    public void setIdentificado(Boolean identificado) {
+        this.identificado = identificado;
+    }
     
-    
-    
+
     
     
 }

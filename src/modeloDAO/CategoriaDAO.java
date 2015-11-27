@@ -37,21 +37,30 @@ public class CategoriaDAO {
      * Procedimiento que inserta una nueva categoría en el BBDD
      *
      * @param cat Recibe como parámetro un objeto de la clase Categoría
+     * @return Boolean que indica si se hizo la insercion o no
      */
-    public void InsertarCategoria(Categoria cat) {
+    public Boolean InsertarCategoria(Categoria cat) {
+        Boolean bool = false;
+        if (cat != null) {
+            int ident = 0;
+            ident = devuelveCategoria(cat.getNombre());
+            if (ident == 0) {
+                try {
+                    pstmt = con.prepareStatement("INSERT INTO CATEGORIA VALUES (?,?)");
+                    pstmt.clearParameters();
+                    pstmt.setInt(1, cat.getId_categoria());
+                    pstmt.setString(2, cat.getNombre());
+                    pstmt.executeUpdate();
+                    bool = true;
+                } catch (SQLException ex) {
+                    Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    pstmt = null;
+                }
+            }
 
-        try {
-            pstmt = con.prepareStatement("INSERT INTO CATEGORIA VALUES (?,?)");
-            pstmt.clearParameters();
-            pstmt.setInt(1, cat.getId_categoria());
-            pstmt.setString(2, cat.getNombre());
-            pstmt.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(CategoriaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            pstmt = null;
         }
-
+        return bool;
     }
 
     /**
@@ -116,11 +125,12 @@ public class CategoriaDAO {
 
     /**
      * Funcion que devuelve el ID_Categoria dado un nombre de categoria.
+     *
      * @param nombr Nombre de la categoria.
      * @return Idenfiticador de la categoria.
      */
-       public int devuelveCategoria(String nombr) {
-           int idcategoria=-1;
+    public int devuelveCategoria(String nombr) {
+        int idcategoria = 0;
         if (pstmt == null) {
             try {
                 try {
@@ -143,9 +153,7 @@ public class CategoriaDAO {
         }
         return idcategoria;
     }
-    
-    
-    
+
     /**
      * Funcion que hace que se cierre la conexion cuando se elimina el objeto.
      *

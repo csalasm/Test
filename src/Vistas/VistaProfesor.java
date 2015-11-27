@@ -16,8 +16,9 @@ public class VistaProfesor extends javax.swing.JFrame {
     /**
      * Creates new form VistaProfesor
      */
-    public VistaProfesor() {
+    public VistaProfesor(String nombre) {
         initComponents();
+        etqVistaProfesor.setText(Messages.getString("hello_msg_label")+" "+nombre);
         this.setTitle(Messages.getString("labelProfesor"));
     }
 
@@ -139,7 +140,7 @@ public class VistaProfesor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VistaProfesor().setVisible(true);
+              //  new VistaProfesor().setVisible(true);
             }
         });
     }
@@ -154,8 +155,4 @@ public class VistaProfesor extends javax.swing.JFrame {
     private javax.swing.JLabel labelMenu;
     // End of variables declaration//GEN-END:variables
 }
-///AÑADIR USUARIO
-///AÑADIR TEST de profesor a NUEVOTEST
-///CREAR PREGUNTA
-///LISTA TODOS
-///
+

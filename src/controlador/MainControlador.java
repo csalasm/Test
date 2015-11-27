@@ -26,6 +26,8 @@ public class MainControlador {
         //Messages.getCadena();
         //Messages.setLocale(new Locale("en","UK"));
         //System.out.println(Messages.getString("msg_error"));
+  
     }
+    
 
 }

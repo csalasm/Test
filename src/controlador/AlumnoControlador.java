@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
@@ -48,7 +50,7 @@ import modeloDAO.UsuarioDAO;
  *
  * @author alejandroruiz
  */
-class AlumnoControlador implements ActionListener{
+class AlumnoControlador implements ActionListener,WindowListener{
     
     final private VistaAlumno va;
     private VistaSeleccionarTest vst;
@@ -56,6 +58,8 @@ class AlumnoControlador implements ActionListener{
     private TestDAO testDAO;
 
     private RespuestaDAO respuestaDAO;
+    
+    private UsuarioDAO usuarioDAO;
 
     private ExamenDAO examenDAO;
     String dni;
@@ -91,7 +95,7 @@ class AlumnoControlador implements ActionListener{
                 break;
             case "RESULTADOS":
                 alumno = new UsuarioDAO().devuelveUsuario(usuario.getDni());
-                System.out.println(alumno);
+                //System.out.println(alumno);
                 ArrayList<Examen> lista_examenes = new ExamenDAO().devolverExamenesAlumno(alumno);
                 VistaResultados vr = new VistaResultados(lista_examenes.size());
                 
@@ -105,8 +109,9 @@ class AlumnoControlador implements ActionListener{
                      count_fallos=count_fallos+(ex.getFallos());
                     
                     String fecha = new SimpleDateFormat("dd-MM-yyyy").format(ex.getFecha());
+                    String nombre_test = new TestDAO().getNombreTest(ex.getId_test());
                     
-                    Object[] row ={ex.getDni(),fecha,ex.getId_test(),ex.getAciertos(),ex.getFallos(),ex.getNota()};
+                    Object[] row ={ex.getDni(),fecha,nombre_test,ex.getAciertos(),ex.getFallos(),ex.getNota()};
                     vr.modeloTabla.addRow(row);  
                 }
                 vr.modeloTabla2.addRow(new Object[]{count_aciertos, count_fallos, count_nota/lista_examenes.size()});
@@ -154,6 +159,14 @@ class AlumnoControlador implements ActionListener{
         va.btnSeleccionar.addActionListener(this);
         va.btnResultados.setActionCommand("RESULTADOS");
         va.btnResultados.addActionListener(this);
+        va.addWindowListener(this);
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+            @Override
+            public void run(){
+                usuarioDAO = new UsuarioDAO();
+                usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
+            }
+        });
         
     }
     
@@ -286,5 +299,38 @@ class AlumnoControlador implements ActionListener{
        
    }
 
-    
+    @Override
+    public void windowOpened(WindowEvent e) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        usuarioDAO=new UsuarioDAO();
+        usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
+
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        usuarioDAO=new UsuarioDAO();
+        usuarioDAO.loggeaUsuario(usuario, Boolean.FALSE);
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+    }
+
+   
 }
