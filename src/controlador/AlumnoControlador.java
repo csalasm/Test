@@ -6,16 +6,24 @@
 package controlador;
 
 import Utilidades.Messages;
+import Utilidades.PDF;
 import Vistas.VistaAlumno;
 import Vistas.VistaHacerTest;
 import Vistas.VistaResultados;
 import Vistas.VistaSeleccionarTest;
+import com.itextpdf.text.DocumentException;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 
@@ -57,6 +65,7 @@ class AlumnoControlador implements ActionListener{
     private ArrayList<Pregunta> listaPreguntas;
     private int preguntaActual = 0; // Indica la pregunta por la que va el test
     private ArrayList<String> listaRespuestasUsuario;
+    private ArrayList<ArrayList<Respuesta>> listaDelistaRespuestas;
     private Test testActual;
     private Usuario usuario;
     
@@ -66,6 +75,7 @@ class AlumnoControlador implements ActionListener{
         va.setVisible(true);
         initEvents();
         this.usuario = u; 
+        listaDelistaRespuestas = new ArrayList<>();
     }
 
     @Override
@@ -163,6 +173,7 @@ class AlumnoControlador implements ActionListener{
         // Primera pregunta
         if (preguntaActual == 0) {
             ArrayList<Respuesta> listaRespuestas = new RespuestaDAO().devuelveRespuesta(listaPreguntas.get(preguntaActual));
+            listaDelistaRespuestas.add(listaRespuestas);
             vht.setPregunta(listaPreguntas.get(preguntaActual).getTexto(), listaRespuestas, listaPreguntas.size(), preguntaActual);
             preguntaActual++;
         } // Quedan preguntas por realizar y hay tiempo
@@ -170,6 +181,7 @@ class AlumnoControlador implements ActionListener{
             if (vht.mi_panel.respSeleccionada != null) {
                 listaRespuestasUsuario.add(vht.mi_panel.respSeleccionada);
                 ArrayList<Respuesta> listaRespuestas = new RespuestaDAO().devuelveRespuesta(listaPreguntas.get(preguntaActual));
+                listaDelistaRespuestas.add(listaRespuestas);
                 vht.setPregunta(listaPreguntas.get(preguntaActual).getTexto(), listaRespuestas, listaPreguntas.size(), preguntaActual);
                 preguntaActual++;
             }
@@ -209,6 +221,7 @@ class AlumnoControlador implements ActionListener{
         calcularNota(correctas, falladas, listaPreguntas.size());
     }
     
+    @SuppressWarnings("empty-statement")
     private void calcularNota(int correctas, int falladas, int numPreguntas) {
         double nota;
         // Comprobamos la configuración del test
@@ -229,12 +242,42 @@ class AlumnoControlador implements ActionListener{
         vht.dispose();
         // DefaultListModel model = (DefaultListModel) vst.jListTest.getModel();
         //model.remove(vst.jListTest.getSelectedIndex());
-        JOptionPane.showMessageDialog(vst, Messages.getString("msgTestScore")+" "+nota,null,JOptionPane.INFORMATION_MESSAGE);
         preguntaActual = 0;
         // Guardamos el examen realizado
         
         Examen e = new Examen(usuario.getDni(), t.getId_test(), new Date(Calendar.getInstance().getTime().getTime()), correctas, falladas, nota);
         new ExamenDAO().crearExamen(e);
+        
+        // Generamos el PDF
+        boolean generarPdf = false;
+        if (listaPreguntas.size() == listaRespuestasUsuario.size()) {
+            PDF pdf = new PDF(listaPreguntas, listaDelistaRespuestas);
+            generarPdf = true;
+            try {
+                pdf.createPDF(t.getNombre(),usuario.getDni()+".pdf");
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(AlumnoControlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(AlumnoControlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if (generarPdf) {
+            Object [] resp =  {Messages.getString("textAceptar"), Messages.getString("textMostrarPDF")};
+            int selectedOption = JOptionPane.showOptionDialog(vst, Messages.getString("msgTestScore")+" "+nota, null, JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, resp, resp[0]);
+            if (selectedOption == JOptionPane.NO_OPTION) {
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        File myFile = new File(PDF.PDF_PATH+usuario.getDni()+".pdf");
+                        Desktop.getDesktop().open(myFile);
+                    } catch (IOException ex) {
+                        // no application registered for PDFs
+                    }
+                }
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(vst, Messages.getString("msgTestScore")+" "+nota, null, JOptionPane.INFORMATION_MESSAGE);
     }
 
    private void processSeleccionar(){
