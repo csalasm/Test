@@ -261,16 +261,18 @@ class AlumnoControlador implements ActionListener,WindowListener{
     @SuppressWarnings("empty-statement")
     private void calcularNota(int correctas, int falladas, int numPreguntas) {
         double nota;
+        double f=0;
         // Comprobamos la configuración del test
         Test t = testDAO.getTest(testActual.getId_test());
         if (t.getResta() == 0)
             nota = correctas*10/numPreguntas;
         else { // Una mal resta una bien, por tanto sería tener el doble de fallos
             if (t.getResta() == 1)
-                falladas = falladas * 2;
+                f = falladas * 2;
             else 
-                falladas = falladas + 1/t.getResta()*falladas;
-            nota = (correctas-falladas)*10/numPreguntas;
+                f = falladas + (1/t.getResta())*falladas;
+            nota = (correctas-f)*10/numPreguntas;
+            nota =Math.round(nota*100.00)/100.00;
         }
         if (nota < 0)
             nota = 0;
