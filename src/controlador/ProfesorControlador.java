@@ -407,6 +407,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         for (Test t: lista_test)
             vre.jListSelectTest.addItem(t.getNombre());
         
+        vre.setLocationRelativeTo(null);
         vre.setVisible(true);
     }
     

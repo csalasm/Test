@@ -20,6 +20,7 @@ public class VistaResultadosExamen extends javax.swing.JFrame {
      */
     public VistaResultadosExamen() {
         initComponents();
+        this.setResizable(false);
 
     }
 
@@ -37,11 +38,11 @@ public class VistaResultadosExamen extends javax.swing.JFrame {
         jListSelectTest = new javax.swing.JComboBox();
         labelSeleccionarTest = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jScrollPane1.setViewportView(tablaResultadosTest);
 
-        labelSeleccionarTest.setText("Seleccione un test:");
+        labelSeleccionarTest.setText(Messages.getString("labelSeleccionaTest"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
