@@ -290,7 +290,7 @@ class AlumnoControlador implements ActionListener,WindowListener{
             PDF pdf = new PDF(listaPreguntas, listaDelistaRespuestas);
             generarPdf = true;
             try {
-                pdf.createPDF(t.getNombre(), String.valueOf(nota), usuario.getDni()+".pdf");
+                pdf.createPDF(t.getNombre(), usuario.getNombre()+" "+usuario.getApellidos(), String.valueOf(nota),usuario.getDni()+".pdf");
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AlumnoControlador.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DocumentException ex) {

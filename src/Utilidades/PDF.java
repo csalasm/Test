@@ -46,14 +46,15 @@ public class PDF {
         
     }
     
-    public void createPDF(String titleExamen, String nota, String filename) throws FileNotFoundException, DocumentException {
+    public void createPDF(String titleExamen, String nombre, String nota, String filename) throws FileNotFoundException, DocumentException {
         Document document = new Document();
         File f = new File(PDF_PATH);
         if (!f.exists())
             f.mkdir();
         PdfWriter.getInstance(document, new FileOutputStream(PDF_PATH+filename));
         document.open();
-        document.add(new Paragraph(titleExamen+" "+Messages.getString("textCalificacion")+": "+nota));
+        document.add(new Paragraph(titleExamen));
+        document.add(new Paragraph(nombre+" "+Messages.getString("msgTestScore")+nota));
         document.add(new Paragraph("\n"));
         document.add(createFile());
         document.add(new Paragraph(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(Calendar.getInstance().getTime())));
