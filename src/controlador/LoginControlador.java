@@ -38,10 +38,12 @@ public class LoginControlador implements ActionListener {
     public void actionPerformed(ActionEvent e) throws NullPointerException{
         if (e.getActionCommand().equals("LOGIN")) {
             
-            Usuario u = usuario.logginUser(vistaLogin.user.getText(), vistaLogin.pfPassword.getText());//He quitado los toString era redundante
+            Usuario u = usuario.logginUser(vistaLogin.user.getText(), vistaLogin.pfPassword.getText());
             //System.out.println(u);
-            if (u != null) {
-                
+            usuario.loggeaUsuario(u, Boolean.TRUE);
+            u.setIdentificado(Boolean.TRUE);
+            
+            if (u != null && !u.getIdentificado()) {
                 if (u.isEs_profesor()) {
                     ProfesorControlador pc= new ProfesorControlador(usuario, u,new VistaProfesor(u.getNombre()));
                     vistaLogin.dispose();
@@ -51,7 +53,9 @@ public class LoginControlador implements ActionListener {
                     vistaLogin.dispose();
                 }
             }
-            else {
+            else if(u.getIdentificado()){
+                JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_identif"),null,JOptionPane.ERROR_MESSAGE);
+            }else{
                 JOptionPane.showMessageDialog(vistaLogin,Messages.getString("msg_error"),null,JOptionPane.ERROR_MESSAGE);
             }
         }

@@ -172,8 +172,9 @@ public class UsuarioDAO {
      * Funcion que actualiza el valor Identificador para dejar que solo un Usuario acceda al mismo tiempo en una cuenta.
      * @param u Objeto de la clase Usuario
      * @param boolen Objeto de la clase Boolean
+     * @return Objeto de la clase Usuario
      */
-    public void loggeaUsuario(Usuario u, Boolean boolen) {
+    public Usuario loggeaUsuario(Usuario u, Boolean boolen) {
         if (null == psSentencia) {
             if (boolen) {
                 try {
@@ -181,7 +182,7 @@ public class UsuarioDAO {
                     psSentencia.clearParameters();
                     psSentencia.setString(1, u.getDni());
                     psSentencia.executeUpdate();
-
+                    u.setIdentificado(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
                 } finally {
@@ -193,6 +194,7 @@ public class UsuarioDAO {
                     psSentencia.clearParameters();
                     psSentencia.setString(1, u.getDni());
                     psSentencia.executeUpdate();
+                    u.setIdentificado(false);
 
                 } catch (SQLException ex) {
                     Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -202,6 +204,7 @@ public class UsuarioDAO {
             }
 
         }
+        return u;
     }
 
     /**
