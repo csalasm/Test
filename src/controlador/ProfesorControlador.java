@@ -11,18 +11,28 @@ import Vistas.VistaCrearPregunta;
 import Vistas.VistaNuevoTest;
 import Vistas.VistaNuevoUsuario;
 import Vistas.VistaProfesor;
+import Vistas.VistaResultadosExamen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.Categoria;
+import modelo.Examen;
 import modelo.Test;
 import modelo.Usuario;
 import modelo.Pregunta;
 import modelo.Respuesta;
 import modeloDAO.CategoriaDAO;
+import modeloDAO.ExamenDAO;
 import modeloDAO.TestDAO;
 import modeloDAO.UsuarioDAO;
 import modeloDAO.PreguntaDAO;
@@ -44,6 +54,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
     private VistaNuevoTest vnt = null;
     private VistaCrearPregunta vcp = null;
     private VistaActivarTest vat = null;
+    private VistaResultadosExamen vre = null;
     private Usuario creauser = null;
     private final Usuario userprof;
     private Test test = null;
@@ -115,6 +126,12 @@ public class ProfesorControlador implements ActionListener,WindowListener {
             case "CLOSEupdate":
                 vat.setVisible(false);
                 break;
+            case "RESULTADOS":
+                gestionaResultados();
+                break;
+            case "SELECCIONA_TEST":
+                updateResultTable(lista_test.get(vre.jListSelectTest.getSelectedIndex()));
+                break;
 
         }
     }
@@ -134,6 +151,8 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         vistaProfesor.btnCreaPregunta.addActionListener(this);
         vistaProfesor.btnActivaTest.setActionCommand("ACTIVAtest");
         vistaProfesor.btnActivaTest.addActionListener(this);
+        vistaProfesor.btnResultadosTest.setActionCommand("RESULTADOS");
+        vistaProfesor.btnResultadosTest.addActionListener(this);
         vistaProfesor.addWindowListener(this);
         Runtime.getRuntime().addShutdownHook(new Thread(){
             @Override
@@ -169,16 +188,26 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         creauser = new Usuario(vnu.tfDniUser.getText(), vnu.tfNombre.getText(),
                 vnu.tfApellidos.getText(), vnu.pfPassword.getText(),
                 vnu.rbSiPermiso.isSelected());
-        usuario.insertaUsuario(creauser);
-        vnu.tfNombre.setText("");
-        vnu.tfDniUser.setText("");
-        vnu.tfApellidos.setText("");
-        vnu.pfPassword.setText("");
-        JOptionPane.showMessageDialog(vnu, Messages.getString("useradd"), null, JOptionPane.INFORMATION_MESSAGE);
-        vnu.setVisible(false);
-        vnu.pfPassword.setText("");
+        try {
+            usuario.insertaUsuario(creauser);
+            vnu.tfNombre.setText("");
+            vnu.tfDniUser.setText("");
+            vnu.tfApellidos.setText("");
+            vnu.pfPassword.setText("");
+            JOptionPane.showMessageDialog(vnu, Messages.getString("useradd"), null, JOptionPane.INFORMATION_MESSAGE);
+            vnu.setVisible(false);
+            vnu.pfPassword.setText("");
 
-        vistaProfesor.setVisible(true);
+            vistaProfesor.setVisible(true);
+        } catch (java.sql.SQLIntegrityConstraintViolationException e) {
+            if (e.getErrorCode() == 1400)
+                JOptionPane.showMessageDialog(vnu, Messages.getString("textUsuarioVacio"), null, JOptionPane.ERROR_MESSAGE);
+            else if (e.getErrorCode() == 1)
+                JOptionPane.showMessageDialog(vnu, Messages.getString("textUsuarioExistente"), null, JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            
+        }
+        
     }
 
     /**
@@ -207,12 +236,19 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         testdao = new TestDAO();
         test = new Test(testdao.devuelveSequence(), vnt.jTextNombre.getText(), vnt.cbDuracion.getSelectedIndex() * 60,
                 vnt.cbRestada.getSelectedIndex(), userprof.getDni(), Boolean.FALSE);
-        testdao.insertaTest(test);
-        vnt.jTextNombre.setText("");
-        vnt.cbDuracion.setSelectedIndex(0);
-        vnt.cbRestada.setSelectedIndex(0);
-        JOptionPane.showMessageDialog(vnt, Messages.getString("testadd"), null, JOptionPane.INFORMATION_MESSAGE);
-        vnt.setVisible(false);
+        try {
+            testdao.insertaTest(test);
+            vnt.jTextNombre.setText("");
+            vnt.cbDuracion.setSelectedIndex(0);
+            vnt.cbRestada.setSelectedIndex(0);
+            JOptionPane.showMessageDialog(vnt, Messages.getString("testadd"), null, JOptionPane.INFORMATION_MESSAGE);
+            vnt.setVisible(false);
+            } catch (java.sql.SQLIntegrityConstraintViolationException e) {
+            if (e.getErrorCode() == 1400)
+                JOptionPane.showMessageDialog(vnu, Messages.getString("textNombreTest"), null, JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException e) {
+                
+            }
 
     }
 
@@ -258,6 +294,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         Boolean a=categodao.InsertarCategoria(cat);
         if(a){
         vcp.cbSelecTema.addItem(cat.getNombre());
+        vcp.tfAnadeTema.setText("");
         }
     }
 
@@ -360,6 +397,33 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         vat.cbActivaTest.addItem(nombretestdest);
         vat.cbTesDesct.removeItem(nombretestdest);
         JOptionPane.showMessageDialog(vat, Messages.getString("test_desacti"), null, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    private void gestionaResultados() {
+        vre = new VistaResultadosExamen();
+        vre.jListSelectTest.addActionListener(this);
+        vre.jListSelectTest.setActionCommand("SELECCIONA_TEST");
+        lista_test = new TestDAO().devuelveTestes(userprof);
+        for (Test t: lista_test)
+            vre.jListSelectTest.addItem(t.getNombre());
+        
+        vre.setVisible(true);
+    }
+    
+    private void updateResultTable(Test t) {
+        ArrayList<Examen>listaExamen = new ExamenDAO().devolverExamenes(t);
+        vre.modeloTabla = new DefaultTableModel(new Object[] { Messages.getString("labelDNI"), Messages.getString("Fecha"), Messages.getString("Aciertos"),Messages.getString("Fallos"),Messages.getString("Puntuacion") }, 0);
+        for (Examen e: listaExamen) {
+            Object[] row ={e.getDni(),new SimpleDateFormat("dd-MM-yyyy").format(e.getFecha()),e.getAciertos(),e.getFallos(),e.getNota()};
+            vre.modeloTabla.addRow(row);  
+        }
+        vre.tablaResultadosTest.setModel(vre.modeloTabla);
+        vre.tablaResultadosTest.setEnabled(false);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        for(int x=0;x<vre.tablaResultadosTest.getColumnCount();x++){
+            vre.tablaResultadosTest.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        }
     }
 
     @Override

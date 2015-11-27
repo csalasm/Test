@@ -52,7 +52,7 @@ public class ExamenDAO {
             pstmt.setDouble(6, exam.getNota());
             pstmt.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ExamenDAO.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ExamenDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             pstmt = null;
         }

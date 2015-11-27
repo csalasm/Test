@@ -53,6 +53,8 @@ public class VistaNuevoTest extends javax.swing.JFrame {
 
         btnNuevoTest.setText(Messages.getString("btnNuevoTest"));
 
+        jTextAutor.setEnabled(false);
+
         jLabel1.setText(Messages.getString("labelAutor"));
 
         cbDuracion.setModel(new javax.swing.DefaultComboBoxModel<>(tiempo));

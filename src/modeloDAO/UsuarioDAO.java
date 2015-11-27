@@ -36,26 +36,17 @@ public class UsuarioDAO {
      *
      * @param usua Objeto de la clase Usuario.
      */
-    public void insertaUsuario(Usuario usua) {
+    public void insertaUsuario(Usuario usua) throws SQLException {
 
-        if (null == psSentencia) {
-            try {
-                psSentencia = con.prepareStatement("INSERT INTO USUARIO (DNI,NOMBRE,APELLIDOS,PASSWORD,ES_PROF) VALUES (?,?,?,?,?)");
-                psSentencia.clearParameters();
-                psSentencia.setString(1, usua.getDni());
-                psSentencia.setString(2, usua.getNombre());
-                psSentencia.setString(3, usua.getApellidos());
-                psSentencia.setString(4, usua.getContraseña());
-                psSentencia.setBoolean(5, usua.isEs_profesor());
-                psSentencia.executeUpdate();
+        psSentencia = con.prepareStatement("INSERT INTO USUARIO (DNI,NOMBRE,APELLIDOS,PASSWORD,ES_PROF) VALUES (?,?,?,?,?)");
+        psSentencia.clearParameters();
+        psSentencia.setString(1, usua.getDni());
+        psSentencia.setString(2, usua.getNombre());
+        psSentencia.setString(3, usua.getApellidos());
+        psSentencia.setString(4, usua.getContraseña());
+        psSentencia.setBoolean(5, usua.isEs_profesor());
+        psSentencia.executeUpdate();
 
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                psSentencia = null;
-            }
-
-        }
     }
 
     /**
