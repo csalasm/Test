@@ -384,7 +384,7 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         testdao.UpdateDispo(teste, Boolean.TRUE);
         vat.cbTesDesct.addItem(nombretestact);
         vat.cbActivaTest.removeItem(nombretestact);
-        JOptionPane.showMessageDialog(vat, Messages.getString("test_acti."), null, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(vat, Messages.getString("test_acti"), null, JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

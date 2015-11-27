@@ -41,6 +41,7 @@ public class CategoriaDAOTest {
 
     /**
      * Test of InsertarCategoria method, of class CategoriaDAO.
+     * Prueba Insertar una Categoria existente.
      */
     @Test
     public void testInsertarCategoria() {
