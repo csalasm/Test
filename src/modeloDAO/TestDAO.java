@@ -63,8 +63,8 @@ public class TestDAO {
     /**
      * Actualiza si un test esta activo o no.
      *
-     * @param tes
-     * @param disp
+     * @param tes Objeto de la clase Test que queremos actualizar
+     * @param disp TRUE si queremos activar el test, FLASE si queremos desactivarlo
      */
     public void UpdateDispo(Test tes, Boolean disp) {
         if (psSentencia == null) {
@@ -121,10 +121,10 @@ public class TestDAO {
     }
 
     /**
-     * Devuelve los test Activos que tiene un profesor.
+     * Devuelve los Test Activos que tiene un profesor.
      *
-     * @param u
-     * @return
+     * @param u Objeto de la clase Usuario con roll de Profesor
+     * @return Lista de Test activos de un profesor.
      */
     public ArrayList<Test> devuelveTestActivosProf(Usuario u) {
         ArrayList<Test> listaActivos_test = new ArrayList<>();
@@ -158,8 +158,8 @@ public class TestDAO {
     }
     /**
      * Devuelve los Test que esten desactivados por el profesor.
-     * @param u
-     * @return 
+     * @param u Objeto de la clase Usuario con roll de Profesor
+     * @return Lista de Test no activos de un profesor.
      */
     public ArrayList<Test> devuelveTestDesactivosProf(Usuario u) {
         ArrayList<Test> listaDesactivos_test = new ArrayList<>();
@@ -193,7 +193,8 @@ public class TestDAO {
 
     /**
      * Funcion que devuelve todos los test de la base de datos que esten activos
-     *
+     * @param u Objeto de la clase Usuario
+     * @param all 
      * @return ArrayList con la lista de los test que estan activos
      */
 
@@ -236,10 +237,10 @@ public class TestDAO {
     }
 
     /**
-     * Devuelve el test dado un nombre de Test.
+     * Devuelve el test dado un nombre de Test
      *
-     * @param nombre
-     * @return
+     * @param nombre Cadena nombre del Objeto Test
+     * @return Test Objeto de la clase Test
      */
     public Test devuelveTestNomUsuario(String nombre) {
         //DEVOLVER TEST CUYO VALOR ESTE ACTIVO.
@@ -272,9 +273,9 @@ public class TestDAO {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     *Funcion que devuelve un objeto de la clase Test dado un Identificador del Test
+     * @param id Entero Con el identificador del Test
+     * @return Objeto de la clase Test
      */
     public Test getTest(Integer id) {
         Test t = null;
@@ -299,9 +300,9 @@ public class TestDAO {
     }
 
     /**
-     *
-     * @param nombr
-     * @return
+     * Funcion que devuelve un Identificador de un Test dado un Nombre del Test
+     * @param nombr Nombre del Test
+     * @return Entero Identificador del Test
      */
     public int getIdTest(String nombr) {
         int idtest = 0;

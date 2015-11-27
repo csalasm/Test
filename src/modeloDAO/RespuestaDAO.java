@@ -32,9 +32,9 @@ public class RespuestaDAO {
     }
 
     /**
-     * Funcion que inserta una Respuesta en la base de datos.
+     * Funcion que inserta una Respuesta en la base de datos
      *
-     * @param resp Objeto de la case Respuesta.
+     * @param resp Objeto de la case Respuesta
      */
     public void insertaRespuesta(Respuesta resp) {
         if (psSentencia == null) {
@@ -58,10 +58,10 @@ public class RespuestaDAO {
     }
 
     /**
-     * Funcion que devuelve un ArrayList con las posibles respuestas.
+     * Funcion que devuelve un ArrayList con las posibles respuestas
      *
-     * @param preg Objeto de la clase Pregunta.
-     * @return ArrayList con las posibles respuestas.
+     * @param preg Objeto de la clase Pregunta
+     * @return ArrayList con las posibles respuestas
      */
     public ArrayList<Respuesta> devuelveRespuesta(Pregunta preg) {
         ArrayList<Respuesta> lista_respuesta = new ArrayList<>();
@@ -91,24 +91,30 @@ public class RespuestaDAO {
         }
         return lista_respuesta;
     }
-    
+
+    /**
+     * Funcion que devuelve la Respuesta correcta dada una pregunta
+     *
+     * @param p Objeto de la clase Pregunta
+     * @return Devuelve un objeto de la clase Respuesta
+     */
     public Respuesta getRespuestaCorrecta(Pregunta p) {
         Respuesta r = null;
         try {
             psSentencia = con.prepareStatement("SELECT * FROM RESPUESTA WHERE CORRECTA = 1 AND ID_PREGUNTA = ?");
             psSentencia.clearParameters();
             psSentencia.setInt(1, p.getId_pregunta());
-            
+
             ResultSet rs = psSentencia.executeQuery();
             while (rs.next()) {
-                r = new Respuesta (
+                r = new Respuesta(
                         rs.getInt("ID_RESPUESTA"),
                         rs.getString("TEXTO"),
                         rs.getBoolean("CORRECTA"),
                         rs.getInt("ID_PREGUNTA")
                 );
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(RespuestaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -67,7 +67,7 @@ public class PreguntaDAO {
      * Método que devuelve una pregunta dado su ID
      *
      * @param id ID de la pregunta
-     * @return Pregunta
+     * @return Objeto de la clase Pregunta
      */
     public Pregunta getPregunta(Integer id) {
         Pregunta p = null;
