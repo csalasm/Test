@@ -78,7 +78,7 @@ public class UsuarioDAO {
                     psSentencia = con.prepareStatement("SELECT * FROM USUARIO WHERE DNI=?");
                     psSentencia.clearParameters();
                     psSentencia.setString(1, dni);
- 
+
                 } catch (SQLException ex) {
                     Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -166,6 +166,42 @@ public class UsuarioDAO {
             }
         }
         return user;
+    }
+
+    /**
+     * Funcion que actualiza el valor Identificador para dejar que solo un Usuario acceda al mismo tiempo en una cuenta.
+     * @param u Objeto de la clase Usuario
+     * @param boolen Objeto de la clase Boolean
+     */
+    public void loggeaUsuario(Usuario u, Boolean boolen) {
+        if (null == psSentencia) {
+            if (boolen) {
+                try {
+                    psSentencia = con.prepareStatement("UPDATE USUARIO SET IDENTIFICADOR='1'  WHERE DNI=?");
+                    psSentencia.clearParameters();
+                    psSentencia.setString(1, u.getDni());
+                    psSentencia.executeUpdate();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    psSentencia = null;
+                }
+            } else if (!boolen) {
+                try {
+                    psSentencia = con.prepareStatement("UPDATE USUARIO SET IDENTIFICADOR='0'  WHERE DNI=?");
+                    psSentencia.clearParameters();
+                    psSentencia.setString(1, u.getDni());
+                    psSentencia.executeUpdate();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+                } finally {
+                    psSentencia = null;
+                }
+            }
+
+        }
     }
 
     /**

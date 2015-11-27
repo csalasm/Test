@@ -246,8 +246,10 @@ public class ProfesorControlador implements ActionListener {
         String categoria = vcp.tfAnadeTema.getText();
         int idcategoria = categodao.devuelveSequence();
         Categoria cat = new Categoria(idcategoria, categoria);
-        categodao.InsertarCategoria(cat);
+        Boolean a=categodao.InsertarCategoria(cat);
+        if(a){
         vcp.cbSelecTema.addItem(cat.getNombre());
+        }
     }
 
     /**
