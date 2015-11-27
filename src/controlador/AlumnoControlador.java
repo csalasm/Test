@@ -81,7 +81,7 @@ class AlumnoControlador implements ActionListener{
                 break;
             case "RESULTADOS":
                 alumno = new UsuarioDAO().devuelveUsuario(usuario.getDni());
-                System.out.println(alumno);
+                //System.out.println(alumno);
                 ArrayList<Examen> lista_examenes = new ExamenDAO().devolverExamenesAlumno(alumno);
                 VistaResultados vr = new VistaResultados(lista_examenes.size());
                 
@@ -95,8 +95,9 @@ class AlumnoControlador implements ActionListener{
                      count_fallos=count_fallos+(ex.getFallos());
                     
                     String fecha = new SimpleDateFormat("dd-MM-yyyy").format(ex.getFecha());
+                    String nombre_test = new TestDAO().getNombreTest(ex.getId_test());
                     
-                    Object[] row ={ex.getDni(),fecha,ex.getId_test(),ex.getAciertos(),ex.getFallos(),ex.getNota()};
+                    Object[] row ={ex.getDni(),fecha,nombre_test,ex.getAciertos(),ex.getFallos(),ex.getNota()};
                     vr.modeloTabla.addRow(row);  
                 }
                 vr.modeloTabla2.addRow(new Object[]{count_aciertos, count_fallos, count_nota/lista_examenes.size()});
