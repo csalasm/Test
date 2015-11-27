@@ -351,6 +351,30 @@ public class TestDAO {
         }
         return sequence;
     }
+    
+    /**
+     * Función que devuelve el nombre de un test según su ID
+     * @param id Recibe como parámetro el ID del test
+     * @return Devuelve el nombre de ese Test
+     */
+    public String getNombreTest(int id){
+        String nombre=null;
+        try{
+            psSentencia = con.prepareStatement("SELECT NOMBRE FROM TEST WHERE ID_TEST=?");
+            psSentencia.clearParameters();
+            psSentencia.setInt(1, id);
+            ResultSet rs = psSentencia.executeQuery();
+            while(rs.next()){
+                nombre=rs.getString("NOMBRE");
+            }
+            
+        }catch(SQLException ex){
+            Logger.getLogger(TestDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            psSentencia=null;
+        }
+        return nombre;
+    }
 
     /**
      * Funcion que hace que se cierre la conexion cuando se elimina el objeto.

@@ -25,7 +25,7 @@ public class VistaResultados extends javax.swing.JFrame {
      */
     public VistaResultados(int ntest) {
         
-        modeloTabla = new DefaultTableModel(new Object[] { Messages.getString("labelDNI"), Messages.getString("Fecha"),"ID_TEST", Messages.getString("Aciertos"),Messages.getString("Fallos"),Messages.getString("Puntuacion") }, 0);
+        modeloTabla = new DefaultTableModel(new Object[] { Messages.getString("labelDNI"), Messages.getString("Fecha"),Messages.getString("labelNombreTest"), Messages.getString("Aciertos"),Messages.getString("Fallos"),Messages.getString("Puntuacion") }, 0);
         modeloTabla2 = new DefaultTableModel(new Object[] { Messages.getString("Aciertos"), Messages.getString("Fallos"),Messages.getString("PuntuacionMedia")}, 0);
         
         initComponents();
