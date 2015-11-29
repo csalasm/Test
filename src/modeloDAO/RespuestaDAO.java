@@ -28,7 +28,7 @@ public class RespuestaDAO {
      * Constructor por defecto que instancia la conexion con la base de datos.
      */
     public RespuestaDAO() {
-        con = new ConexionOrcl().conecta();
+        con = ConexionOrcl.conecta();
     }
 
     /**
@@ -155,9 +155,9 @@ public class RespuestaDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
-    }
+        ConexionOrcl.desconecta();
+    }*/
 }

@@ -28,7 +28,7 @@ public class PreguntaDAO {
 
     public PreguntaDAO() {
 
-        con = new ConexionOrcl().conecta();
+        con = ConexionOrcl.conecta();
     }
 
     /**
@@ -37,30 +37,22 @@ public class PreguntaDAO {
      * @param p Pregunta.
      * @param idtest Identificador del test al que pertenece.
      */
-    public void setPregunta(Pregunta p,int idtest) {
-        try {
+    public void setPregunta(Pregunta p,int idtest) throws SQLException {
+
             ps = con.prepareStatement("INSERT INTO PREGUNTA(ID_PREGUNTA,TEXTO, IMAGEN, ID_CATEGORIA) VALUES (?,?, NULL, ?)");
             ps.clearParameters();
             ps.setInt(1, p.getId_pregunta());
             ps.setString(2, p.getTexto());
             ps.setInt(3, p.getId_categoría());
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(PreguntaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            ps=null;
-        }
-        try {
+
             ps = con.prepareStatement("INSERT INTO PREGUNTA_TEST(ID_PREGUNTA,ID_TEST) VALUES (?,?)");
             ps.clearParameters();
             ps.setInt(1, p.getId_pregunta());
             ps.setInt(2, idtest);
             ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(PreguntaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+
             ps=null;
-        }
     }
 
     /**
@@ -181,10 +173,10 @@ public class PreguntaDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
-    }
+        ConexionOrcl.desconecta();
+    }*/
 
 }

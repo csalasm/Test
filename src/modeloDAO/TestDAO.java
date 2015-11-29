@@ -29,7 +29,7 @@ public class TestDAO {
      * se asigna una conexión llamando a la clase ConexiónOrcl
      */
     public TestDAO() {
-        con = new ConexionOrcl().conecta();
+        con = ConexionOrcl.conecta();
     }
 
     /**
@@ -371,10 +371,10 @@ public class TestDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
-    }
+        ConexionOrcl.desconecta();
+    }*/
 
 }

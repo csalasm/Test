@@ -20,10 +20,7 @@ import java.util.logging.Logger;
  */
 public class ConexionOrcl {
 
-    Connection con = null;
-
-    public ConexionOrcl() {
-    }
+    private static Connection con = null;
 
     /**
      * Funcion que devuelve el objeto de la clase Connection
@@ -40,7 +37,10 @@ public class ConexionOrcl {
      *
      * @return devuelve un objeto de la clase Connection
      */
-    public Connection conecta() {
+    public static Connection conecta() {
+        if (con != null)
+            return con;
+        
         try {
 
             Properties pr1 = new Properties();
@@ -76,12 +76,19 @@ public class ConexionOrcl {
      * que cierre la conexion de ese objeto.
      */
 
-    public void desconecta(Connection descon) {
+    public static void desconecta() {
         try {
-            descon.close();
+            con.close();
+            con = null;
         } catch (SQLException ex) {
             Logger.getLogger(ConexionOrcl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        desconecta();
     }
 }

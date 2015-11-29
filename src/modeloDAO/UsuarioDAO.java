@@ -27,7 +27,7 @@ public class UsuarioDAO {
      */
     public UsuarioDAO() {
 
-        con = new ConexionOrcl().conecta();
+        con = ConexionOrcl.conecta();
     }
 
     /**
@@ -233,9 +233,9 @@ public class UsuarioDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
-    }
+        ConexionOrcl.desconecta();
+    }*/
 }

@@ -309,7 +309,12 @@ public class ProfesorControlador implements ActionListener,WindowListener {
         int idcategoria = categodao.devuelveCategoria((String) vcp.cbSelecTema.getSelectedItem());
         pregunta = new Pregunta(idpregunta, vcp.tfTextoPregunta.getText(), idcategoria, bytes);
         int idtest = testdao.getIdTest((String) vcp.cbSelecTestID.getSelectedItem());
-        preguntadao.setPregunta(pregunta, idtest);
+        try {
+            preguntadao.setPregunta(pregunta, idtest);
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 1400)
+                JOptionPane.showMessageDialog(vcp, Messages.getString("textPreguntaVacio"), null, JOptionPane.ERROR_MESSAGE);
+        }
 
         if (!vcp.tfRespUno.getText().equals("")) {
             respuesta = new Respuesta(respuestadao.devuelveSequence(), vcp.tfRespUno.getText(), vcp.rbtnUno.isSelected(), idpregunta);
@@ -457,5 +462,6 @@ public class ProfesorControlador implements ActionListener,WindowListener {
     @Override
     public void windowDeactivated(WindowEvent e) {
     }
-
+    
+    
 }

@@ -30,7 +30,7 @@ public class CategoriaDAO {
      * Connection se asigna una conexión llamando a la clase ConexiónOrcl
      */
     public CategoriaDAO() {
-        this.con = new ConexionOrcl().conecta();
+        this.con = ConexionOrcl.conecta();
     }
 
     /**
@@ -159,9 +159,9 @@ public class CategoriaDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
-    }
+        ConexionOrcl.desconecta();
+    }*/
 }

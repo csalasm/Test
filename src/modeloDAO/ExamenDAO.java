@@ -32,7 +32,7 @@ public class ExamenDAO {
      * Connection se asigna una conexión llamando a la clase ConexiónOrcl
      */
     public ExamenDAO() {
-        con = new ConexionOrcl().conecta();
+        con = ConexionOrcl.conecta();
     }
 
     /**
@@ -123,11 +123,11 @@ public class ExamenDAO {
      *
      * @throws Throwable Excepcion
      */
-    @Override
+    /*@Override
     protected void finalize() throws Throwable {
         super.finalize();
-        con.close();
+        ConexionOrcl.desconecta();
 
-    }
+    }*/
 
 }
