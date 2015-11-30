@@ -84,12 +84,6 @@ public class CategoriaDAOTest {
     /**
      * Test of finalize method, of class CategoriaDAO.
      */
-    @Test
-    public void testFinalize() throws Exception, Throwable {
-        System.out.println("finalize");
-        CategoriaDAO instance = new CategoriaDAO();
-        instance.finalize();
-        assertNotNull(instance);
-    }
+
     
 }
